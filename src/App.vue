@@ -23,18 +23,4 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-#nav {
-  padding: 30px;
-  background-color: #484646;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #ffffff;
-}
-
-#nav a.router-link-exact-active {
-  color: #9eafa7;
-}
 </style>

@@ -47,4 +47,11 @@ export default {};
 #subscribeLink::after {
   content: " / >";
 }
+
+#navbar a.router-link-exact-active {
+  border-bottom: 1px solid red;
+}
+#navbar a:hover {
+  color: red;
+}
 </style>
