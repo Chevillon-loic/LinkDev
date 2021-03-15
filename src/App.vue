@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Accueil</router-link> |
-      <router-link to="/Connect">Connection</router-link> |
-      <router-link to="/Subscribe">Inscription</router-link>
-    </div>
     <router-view />
   </div>
 </template>
