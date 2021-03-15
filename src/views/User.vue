@@ -1,6 +1,8 @@
 <template>
-  <div id="user">
-    <NavBar />
+  <div class="about">
+    <div id="user">
+      <NavBar />
+    </div>
   </div>
 </template>
 

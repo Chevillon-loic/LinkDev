@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <NavBar />
+    <h1>Page Principale</h1>
   </div>
 </template>
 
