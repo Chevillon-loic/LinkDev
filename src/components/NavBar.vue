@@ -41,10 +41,10 @@ export default {};
 }
 #connectLink::before,
 #subscribeLink::before {
-  content: "<";
+  content: "< ";
 }
 #connectLink::after,
 #subscribeLink::after {
-  content: "/>";
+  content: " / >";
 }
 </style>
