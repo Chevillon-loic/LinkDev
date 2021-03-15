@@ -5,8 +5,13 @@
     </div>
     <router-link to="/">Accueil</router-link>
     <input type="text" placeholder="Rechercher sur LinkDev" />
-    <router-link to="/Connect">Connection</router-link> |
-    <router-link to="/Subscribe">Inscription</router-link>
+    <router-link to="/Connect"
+      ><span id="connectLink">Connection</span></router-link
+    >
+    |
+    <router-link to="/Subscribe"
+      ><span id="subscribeLink">Inscription</span></router-link
+    >
   </div>
 </template>
 
@@ -33,5 +38,13 @@ export default {};
 }
 #logo {
   color: white;
+}
+#connectLink::before,
+#subscribeLink::before {
+  content: "<";
+}
+#connectLink::after,
+#subscribeLink::after {
+  content: "/>";
 }
 </style>
