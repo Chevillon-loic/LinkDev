@@ -6,10 +6,8 @@
       <CreatePost />
     </div>
     <div id="homeContent">
-      <h1>post d'actualité</h1>
-      <p>Post les plus récents en haut - push reverse général</p>
-      <Post like="" nbComment="5" />
-      <Post like="5" nbComment="5" />
+      <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
+      <Post pseudoName=" Alfred" like="0" nbComment="0" />
     </div>
   </div>
 </template>

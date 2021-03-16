@@ -26,7 +26,6 @@
       <div id="footerConnect">
         <!-- .Attention, Home = Link modelé en btn -->
         <br /><button @click="validLogin">login</button>
-        <a class="btnHome" href="/">Home</a>
         <p>Pas de compte? <a href="/subscribe">Inscrivez vous!</a></p>
       </div>
     </div>

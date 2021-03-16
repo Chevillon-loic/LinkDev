@@ -23,16 +23,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isConnect: true,
-    };
-  },
-  methods: {
-    logout: function() {
-      this.isConnect = false;
-    },
-  },
+  inject: ["logout"],
 };
 </script>
 

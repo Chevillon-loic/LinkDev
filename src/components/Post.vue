@@ -24,8 +24,9 @@
 <script>
 export default {
   props: {
-    like: Number,
-    nbComment: Number,
+    like: String,
+    nbComment: String,
+    pseudoName: String,
   },
   data() {
     return {
@@ -33,6 +34,7 @@ export default {
     };
   },
   methods: {
+    // Fonction incré - décré Likes
     btnLike: function() {
       this.propsLike = !this.propsLike;
       if (this.propsLike != true) {
