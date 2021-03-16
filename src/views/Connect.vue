@@ -8,9 +8,19 @@
       <!-- Contenu de "Connexion" avec input etc -->
       <div id="contentConnect">
         <label for="inputConnect">E-mail :</label><br />
-        <input id="inputConnect" type="text" placeholder="Mail" /><br /><br />
+        <input
+          v-model="userMail"
+          id="inputConnect"
+          type="text"
+          placeholder="Mail"
+        /><br /><br />
         <label for="inputPassword">Mot de passe :</label><br />
-        <input id="inputPassword" type="text" placeholder="Mot de passe" />
+        <input
+          v-model="userPassword"
+          id="inputPassword"
+          type="text"
+          placeholder="Mot de passe"
+        />
       </div>
       <!-- footer de "Connexion" avec bouton etc -->
       <div id="footerConnect">
@@ -27,16 +37,25 @@
 export default {
   data() {
     return {
-      isConnect: true,
-      user: {
-        userMail: "",
-        userPassword: "",
-      },
+      isConnect: Boolean,
+      userConnect: [],
+      userMail: "",
+      userPassword: "",
     };
   },
   methods: {
     validLogin: function() {
-      alert("Fais la fonction couillon");
+      // Condition connected or not
+      this.userConnect.userMail = this.userMail;
+      this.userConnect.userPassword = this.userPassword;
+
+      if (this.userMail & this.userPassword) {
+        this.isConnect = true;
+      } else {
+        this.isConnect = false;
+      }
+      this.userConnect.push(this.userMail, this.userPassword);
+      console.log(this.userConnect);
     },
   },
 };

@@ -7,7 +7,8 @@
     </div>
     <div id="homeContent">
       <h1>post d'actualité</h1>
-      <p>Post les plus récents en haut - push reverse (général)</p>
+      <p>Post les plus récents en haut - push reverse général</p>
+      <Post />
     </div>
   </div>
 </template>
@@ -15,11 +16,12 @@
 <script>
 import NavBar from "../components/NavBar";
 import CreatePost from "../components/CreatePost";
+import Post from "../components/Post.vue";
 
 export default {
   name: "Home",
 
-  components: { NavBar, CreatePost },
+  components: { NavBar, CreatePost, Post },
 };
 </script>
 

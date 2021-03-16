@@ -6,7 +6,7 @@
         placeholder="Saisissez le contenu de votre post ici"
         name=""
         id=""
-        cols="100"
+        cols="80"
         rows="5"
       ></textarea
       ><br /><input type="file" />
