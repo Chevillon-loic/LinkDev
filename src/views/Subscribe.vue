@@ -34,26 +34,39 @@
       <span>Année de naissance</span>
       <input type="date" />
     </div> -->
-      <div>
-        <label for="selectLevel">Niveau de dev</label>
-        <select name="selectLevel" id="selectLevel" v-model="user.selectLevel">
-          <option value="Junior">Junior</option>
-          <option value="Confirmé">Confirmé</option>
-          <option value="Expert">Expert</option>
-        </select>
+      <div id="select">
+        <div>
+          <label for="selectLanguage">langage maitrisé</label>
+          <select
+            name="selectLanguage"
+            id="selectLanguage"
+            v-model="user.selectLanguage"
+          >
+            <option value="Javascript">Javascript</option>
+            <option value="PHP">PHP</option>
+            <option value="Ruby">Ruby</option>
+          </select>
+        </div>
+        <div>
+          <label for="selectLevel">Niveau</label>
+          <select
+            name="selectLevel"
+            id="selectLevel"
+            v-model="user.selectLevel"
+          >
+            <option value="Junior">Junior</option>
+            <option value="Confirmé">Confirmé</option>
+            <option value="Expert">Expert</option>
+          </select>
+        </div>
+        <button @click.prevent="pushLanguage">Ajout langage</button>
       </div>
       <div>
-        <label for="selectLanguage">langage maitrisé</label>
-        <select
-          name="selectLanguage"
-          id="selectLanguage"
-          v-model="user.selectLanguage"
-        >
-          <option value="Javascript">Javascript</option>
-          <option value="PHP">PHP</option>
-          <option value="Ruby">Ruby</option>
-        </select>
+        <span v-for="item in test" :key="item.selectLanguage">
+          {{ item }}
+        </span>
       </div>
+
       <button @click.prevent="pushUser">S'inscrire</button>
     </form>
   </div>
@@ -71,9 +84,10 @@ export default {
         email: "",
         password: "",
         repeatPassword: "",
-        selectLevel: "",
         selectLanguage: "",
+        selectLevel: "",
       },
+      test: [],
     };
   },
   methods: {
@@ -83,8 +97,15 @@ export default {
       } else {
         alert("echec mdp");
       }
+      if (this.user.pseudo == "") {
+        alert("Entrez un pseudo");
+      }
       console.log(this.user);
       console.log(this.users);
+    },
+    pushLanguage: function() {
+      this.test.push(this.user.selectLanguage, this.user.selectLevel);
+      console.log(this.test);
     },
   },
 };
@@ -92,12 +113,18 @@ export default {
 
 <style>
 #subscribe {
-  background-color: rgb(228, 222, 222);
   width: 40%;
-  height: 50vh;
+  min-height: 50vh;
   margin: auto;
+  background-color: white;
+  box-shadow: 0 0 8px 1px grey;
+  border-radius: 5px;
 }
 #nameSurname {
   display: flex;
+}
+#select {
+  display: flex;
+  justify-content: center;
 }
 </style>
