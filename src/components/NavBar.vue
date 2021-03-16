@@ -16,7 +16,9 @@
     </div>
     <div v-else>
       <router-link to="/User"><span>Loïc</span></router-link>
-      <button @click="logout"><font-awesome-icon icon="power-off" /></button>
+      <button @click="logout" id="buttonLogout">
+        <font-awesome-icon icon="power-off" />
+      </button>
     </div>
   </div>
 </template>
@@ -70,5 +72,10 @@ export default {
 }
 #navbar a:hover {
   color: red;
+}
+#buttonLogout {
+  border: none;
+  background-color: transparent;
+  font-size: xx-large;
 }
 </style>
