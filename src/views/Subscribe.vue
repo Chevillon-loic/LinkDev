@@ -4,36 +4,36 @@
     <div id="nameSurname">
       <div>
         <label for="name">Prénom</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" v-model="name" />
       </div>
       <div>
         <label for="surname">Nom de famille</label>
-        <input type="text" name="surname" />
+        <input type="text" name="surname" v-model="surname" />
       </div>
     </div>
     <div id="divEmail">
       <label for="email">E-mail</label>
-      <input type="text" name="email" />
+      <input type="text" name="email" v-model="email" />
     </div>
     <div>
       <label for="password">Mot de passe</label>
-      <input type="text" name="password" />
+      <input type="text" name="password" v-model="password" />
     </div>
     <div>
       <label for="repeatPassword">Répéter le mot de passe</label>
       <input type="text" name="repeatPassword" />
     </div>
-    <div>
+    <!-- <div>
       <span>Genre</span><br />
       <label for="Homme">Homme</label>
       <input type="checkbox" name="Homme" />
       <label for="Femme">Femme</label>
       <input type="checkbox" name="Femme" />
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
       <span>Année de naissance</span>
       <input type="date" />
-    </div>
+    </div> -->
     <div>
       <label for="selectLevel">Niveau de dev</label>
       <select name="selectLevel" id="selectLevel">
@@ -43,7 +43,7 @@
       </select>
     </div>
     <div>
-      <label for="selectlanguage">langage maitrisé</label>
+      <label for="selectLanguage">langage maitrisé</label>
       <select name="selectLanguage" id="selectLanguage">
         <option value="">Javascript</option>
         <option value="">PHP</option>
@@ -55,7 +55,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    selectLevel: "",
+    selectLangage: "",
+  }),
+  // methods: {
+  //   pushUser,
+  // },
+};
 </script>
 
 <style>

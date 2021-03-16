@@ -3,7 +3,7 @@
     <div id="logo">
       <router-link to="/"><h1>[LinkDev]</h1></router-link>
     </div>
-    <router-link to="/">Accueil</router-link>
+    <router-link to="/"><font-awesome-icon icon="home"/></router-link>
     <input type="text" placeholder="Rechercher sur LinkDev" />
     <router-link to="/Connect"
       ><span id="connectLink">Connection</span></router-link
