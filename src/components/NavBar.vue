@@ -5,18 +5,35 @@
     </div>
     <router-link to="/"><font-awesome-icon icon="home"/></router-link>
     <input type="text" placeholder="Rechercher sur LinkDev" />
-    <router-link to="/Connect"
-      ><span id="connectLink">Connection</span></router-link
-    >
-    |
-    <router-link to="/Subscribe"
-      ><span id="subscribeLink">Inscription</span></router-link
-    >
+    <div v-if="isConnect == false">
+      <router-link to="/Connect"
+        ><span id="connectLink">Connection</span></router-link
+      >
+      |
+      <router-link to="/Subscribe"
+        ><span id="subscribeLink">Inscription</span></router-link
+      >
+    </div>
+    <div v-else>
+      <router-link to="/User"><span>Loïc</span></router-link>
+      <button @click="logout"><font-awesome-icon icon="power-off" /></button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isConnect: true,
+    };
+  },
+  methods: {
+    logout: function() {
+      this.isConnect = false;
+    },
+  },
+};
 </script>
 
 <style>
