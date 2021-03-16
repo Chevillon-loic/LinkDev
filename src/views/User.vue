@@ -1,16 +1,11 @@
 <template>
   <div class="about">
-    <div id="user">
-      <NavBar />
-    </div>
+    <div id="user"></div>
   </div>
 </template>
 
 <script>
-import NavBar from "../components/NavBar";
-export default {
-  components: { NavBar },
-};
+export default {};
 </script>
 
 <style></style>

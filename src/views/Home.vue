@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <NavBar />
     <div id="homeHeader">
       <h1>Création de post</h1>
       <CreatePost />
@@ -13,12 +12,11 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar";
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 
 export default {
-  components: { NavBar, CreatePost, Post },
+  components: { CreatePost, Post },
 };
 </script>
 

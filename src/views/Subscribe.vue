@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <form id="subscribe">
       <h1>Inscription</h1>
       <div id="pseudo">
@@ -73,9 +72,7 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar";
 export default {
-  components: { NavBar },
   data() {
     return {
       users: [],
