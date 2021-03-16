@@ -8,7 +8,8 @@
     <div id="homeContent">
       <h1>post d'actualité</h1>
       <p>Post les plus récents en haut - push reverse général</p>
-      <Post />
+      <Post like="" nbComment="5" />
+      <Post like="5" nbComment="5" />
     </div>
   </div>
 </template>
@@ -16,11 +17,9 @@
 <script>
 import NavBar from "../components/NavBar";
 import CreatePost from "../components/CreatePost";
-import Post from "../components/Post.vue";
+import Post from "../components/Post";
 
 export default {
-  name: "Home",
-
   components: { NavBar, CreatePost, Post },
 };
 </script>
@@ -40,5 +39,7 @@ export default {
 
 #homeContent {
   height: auto;
+  overflow: scroll;
+  max-height: 47vh;
 }
 </style>
