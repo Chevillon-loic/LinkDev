@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
   data: () => ({
@@ -22,7 +22,7 @@ export default {
       this.isConnected = true;
     },
     logout: function() {
-      this.isConnect = false;
+      this.isConnected = false;
     },
   },
 
