@@ -5,7 +5,7 @@
     </div>
     <router-link to="/"><font-awesome-icon icon="home"/></router-link>
     <input type="text" placeholder="Rechercher sur LinkDev" />
-    <div v-if="isConnect == false">
+    <div v-if="(isConnected = false)">
       <router-link to="/Connect"
         ><span id="connectLink">Connection</span></router-link
       >
@@ -25,16 +25,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isConnect: true,
-    };
-  },
-  methods: {
-    logout: function() {
-      this.isConnect = false;
-    },
-  },
+  inject: ["logout", "login"],
 };
 </script>
 

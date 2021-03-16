@@ -1,8 +1,39 @@
 <template>
   <div id="app">
+    <NavBar v-if="isConnected" />
     <router-view />
   </div>
 </template>
+
+<script>
+import NavBar from "./components/NavBar.vue";
+
+export default {
+  data: () => ({
+    isConnected: false,
+  }),
+
+  components: {
+    NavBar,
+  },
+
+  methods: {
+    login: function() {
+      this.isConnected = true;
+    },
+    logout: function() {
+      this.isConnected = false;
+    },
+  },
+
+  provide: function() {
+    return {
+      login: this.login,
+      logout: this.logout,
+    };
+  },
+};
+</script>
 
 <style>
 body {
