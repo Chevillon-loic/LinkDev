@@ -29,12 +29,12 @@ export default {
   },
   data() {
     return {
-      propsLike: false,
+      propsLike: true,
     };
   },
   methods: {
     btnLike: function() {
-      this.propsLike != this.propsLike;
+      this.propsLike = !this.propsLike;
       if (this.propsLike != true) {
         this.like = Number(this.like) + 1;
         console.log(this.like);
