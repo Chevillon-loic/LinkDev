@@ -1,6 +1,6 @@
 <template>
   <div class="connect">
-    <nav-bar />
+    <NavBar />
     <!-- Boite générale de "Connexion" -->
     <div id="boxConnect">
       <!-- Header de "Connexion" avec titre -->
@@ -34,7 +34,9 @@
 </template>
 
 <script>
+import NavBar from "../components/NavBar";
 export default {
+  components: { NavBar },
   data() {
     return {
       isConnect: Boolean,
