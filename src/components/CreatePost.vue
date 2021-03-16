@@ -1,6 +1,6 @@
 <template>
   <div id="CreatePost">
-    <div v-if="(isConnected = true)">
+    <div v-if="isConnected == true">
       <div id="CreatePostBox">
         <p>Créer un post</p>
         <textarea
@@ -14,7 +14,7 @@
         <button>PUBLIER</button>
       </div>
     </div>
-    <div v-else-if="(isConnected = false)"><h1>Créer un compte</h1></div>
+    <div v-if="isConnected == false"><h1>Créer un compte</h1></div>
   </div>
 </template>
 
@@ -22,6 +22,9 @@
 export default {
   props: {},
   inject: ["logout", "login"],
+  data: () => ({
+    isConnected: true,
+  }),
 };
 </script>
 
