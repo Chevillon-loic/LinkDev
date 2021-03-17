@@ -43,13 +43,14 @@
 
 <script>
 export default {
+  inject: ["divConnexion"],
+
   data() {
     return {
       isConnect: Boolean,
       userConnect: [],
       userMail: "",
       userPassword: "",
-      divConnexion: false,
     };
   },
   methods: {
