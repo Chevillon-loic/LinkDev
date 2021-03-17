@@ -119,6 +119,8 @@
       <!-- LOGO NAVBAR -->
       <div id="logo">
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
+        <!-- Bouton Admin connexion -->
+        <button @click="btnAdmin">Admin connect</button>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"><font-awesome-icon icon="home"/></router-link>
@@ -155,7 +157,7 @@ export default {
     userConnect: [],
     userMail: "",
     userPassword: "",
-    isConnected: true,
+    isConnected: false,
     divConnexion: false,
     // Subscribe
     users: [],
@@ -223,9 +225,8 @@ export default {
     return {
       login: this.login,
       logout: this.logout,
+      btnAdmin: this.btnAdmin,
       isConnected: this.isConnected,
-      divConnexion: this.divConnexion,
-      divSubscribe: this.divSubscribe,
     };
   },
 };

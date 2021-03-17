@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div id="CreatePost">
     <div v-if="isConnected == true">
       <div id="CreatePostBox">
@@ -11,7 +11,7 @@
           rows="5"
         ></textarea
         ><br /><input type="file" />
-        <button>PUBLIER</button>
+        <button @click="btnTest">PUBLIER</button>
       </div>
     </div>
     <div v-else-if="isConnected == false"><h1>Créer un compte</h1></div>
@@ -21,8 +21,13 @@
 <script>
 export default {
   props: {},
-  inject: ["logout", "login", "isConnected"],
+  inject: ["logout", "login", "isConnected", "btnAdmin"],
   data: () => ({}),
+  methods: {
+    btnTest: function() {
+      alert("fonctionne");
+    },
+  },
 };
 </script>
 
@@ -48,4 +53,4 @@ button:hover {
   background-color: gray;
   color: white;
 }
-</style>
+</style>-->
