@@ -16,6 +16,7 @@
       <input type="text" placeholder="Rechercher sur LinkDev" />
       <!-- SI  isConnected==TRUE alors -->
       <div v-if="isConnected == false">
+        <!-- Fait apparaitre la div connection -->
         <button @click="linkConnection" id="linkConnection">
           <span id="connectLink">Connection</span>
         </button>
@@ -43,7 +44,9 @@ export default {
   components: { Connection, Subscribe },
 
   data: () => ({
-    isConnected: false,
+    isConnected: true,
+    divConnexion: false,
+    divSubscribe: true,
   }),
 
   methods: {
@@ -52,9 +55,6 @@ export default {
     },
     logout: function() {
       this.isConnected = false;
-    },
-    closeConnexion: function() {
-      this.divConnexion = false;
     },
     linkConnection: function() {
       this.divConnexion = true;
@@ -71,6 +71,8 @@ export default {
       logout: this.logout,
       btnAdmin: this.btnAdmin,
       isConnected: this.isConnected,
+      divConnexion: this.divConnexion,
+      divSubscribe: this.divSubscribe,
     };
   },
 };

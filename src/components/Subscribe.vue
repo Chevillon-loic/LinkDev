@@ -69,6 +69,8 @@
 
 <script>
 export default {
+  inject: ["divSubscribe"],
+
   data() {
     return {
       users: [],
@@ -81,7 +83,6 @@ export default {
         selectLevel: "",
       },
       test: [],
-      divSubscribe: false,
     };
   },
   methods: {
