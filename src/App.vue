@@ -1,7 +1,119 @@
 <template>
   <div id="app">
-    <Connection />
-    <Subscribe />
+    <!-- DIV CONNECTION -->
+    <!-- DIV CONNECTION -->
+    <!-- DIV CONNECTION -->
+    <div id="connection">
+      <!-- si divConnexion est true affiche la div -->
+      <div v-if="divConnexion == true" id="test">
+        <div id="divConnexion">
+          <div class="connect">
+            <!-- Boite générale de "Connexion" -->
+            <div id="boxConnect">
+              <!-- Bouton pour quitter la page connexion -->
+              <button @click="closeConnexion" id="buttonLeaveConnection">
+                X
+              </button>
+              <!-- Header de "Connexion" avec titre -->
+              <div id="headerConnect"><h3>Connexion</h3></div>
+              <!-- Contenu de "Connexion" avec input etc -->
+              <div id="contentConnect">
+                <label for="inputConnect">E-mail :</label><br />
+                <input
+                  v-model="userMail"
+                  id="inputConnect"
+                  type="text"
+                  placeholder="Mail"
+                /><br /><br />
+                <label for="inputPassword">Mot de passe :</label><br />
+                <input
+                  v-model="userPassword"
+                  id="inputPassword"
+                  type="text"
+                  placeholder="Mot de passe"
+                />
+              </div>
+              <!-- footer de "Connexion" avec bouton etc -->
+              <div id="footerConnect">
+                <!-- .Attention, Home = Link modelé en btn -->
+                <br /><button @click="validLogin">login</button>
+                <p>Pas de compte? <a href="/subscribe">Inscrivez vous!</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DIV SUBSCRIBE -->
+    <!-- DIV SUBSCRIBE -->
+    <!-- DIV SUBSCRIBE -->
+    <!-- si divsubscribe est true affiche la div -->
+    <div v-if="divSubscribe == true" id="test1">
+      <div id="divSubscribe">
+        <form id="subscribe">
+          <button @click="closeSubscribe" id="buttonLeaveSubscribe">
+            X
+          </button>
+          <h1>Inscription</h1>
+          <div id="pseudo">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" name="pseudo" v-model="user.pseudo" />
+          </div>
+          <div id="divEmail">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" v-model="user.email" />
+          </div>
+          <div>
+            <label for="password">Mot de passe</label>
+            <input type="text" name="password" v-model="user.password" />
+          </div>
+          <div>
+            <label for="repeatPassword">Répéter le mot de passe</label>
+            <input
+              type="text"
+              name="repeatPassword"
+              v-model="user.repeatPassword"
+            />
+          </div>
+          <div id="select">
+            <div>
+              <label for="selectLanguage">langage maitrisé</label>
+              <select
+                name="selectLanguage"
+                id="selectLanguage"
+                v-model="user.selectLanguage"
+              >
+                <option value="Javascript">Javascript</option>
+                <option value="PHP">PHP</option>
+                <option value="Ruby">Ruby</option>
+              </select>
+            </div>
+            <div>
+              <label for="selectLevel">Niveau</label>
+              <select
+                name="selectLevel"
+                id="selectLevel"
+                v-model="user.selectLevel"
+              >
+                <option value="Junior">Junior</option>
+                <option value="Confirmé">Confirmé</option>
+                <option value="Expert">Expert</option>
+              </select>
+            </div>
+            <button @click.prevent="pushLanguage">Ajout langage</button>
+          </div>
+          <div>
+            <span v-for="item in test" :key="item.selectLanguage">
+              {{ item }}
+            </span>
+          </div>
+
+          <button @click.prevent="pushUser">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+    <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <!-- NAVBAR -->
     <div id="navbar">
       <!-- LOGO NAVBAR -->
@@ -36,14 +148,26 @@
 </template>
 
 <script>
-import Connection from "./components/Connection.vue";
-import Subscribe from "./components/Subscribe.vue";
 export default {
-  components: { Connection, Subscribe },
-
   data: () => ({
+    // Connection
+    isConnect: Boolean,
+    userConnect: [],
+    userMail: "",
+    userPassword: "",
     isConnected: true,
     divConnexion: false,
+    // Subscribe
+    users: [],
+    user: {
+      pseudo: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      selectLanguage: "",
+      selectLevel: "",
+    },
+    test: [],
     divSubscribe: true,
   }),
 
@@ -57,6 +181,41 @@ export default {
     linkConnection: function() {
       this.divConnexion = true;
       console.log("ehooo");
+    },
+    // Connection
+    validLogin: function() {
+      // Condition connected or not
+      this.userConnect.userMail = this.userMail;
+      this.userConnect.userPassword = this.userPassword;
+
+      if (this.userMail & this.userPassword) {
+        this.isConnect = true;
+      } else {
+        this.isConnect = false;
+      }
+      this.userConnect.push(this.userMail, this.userPassword);
+      console.log(this.userConnect);
+    },
+    closeConnexion: function() {
+      this.divConnexion = false;
+    },
+    // Subscribe
+    pushUser: function() {
+      if (this.user.password == this.user.repeatPassword) {
+        this.users.push(this.user);
+      } else {
+        alert("echec mdp");
+      }
+      if (this.user.pseudo == "") {
+        alert("Entrez un pseudo");
+      }
+    },
+    pushLanguage: function() {
+      this.test.push(this.user.selectLanguage, this.user.selectLevel);
+      console.log(this.test);
+    },
+    closeSubscribe: function() {
+      this.divSubscribe = false;
     },
   },
 
@@ -136,5 +295,74 @@ body {
   background-color: transparent;
   color: white;
   font-size: 17px;
+}
+#boxConnect {
+  background-color: white;
+  box-shadow: 0 0 8px 1px grey;
+  padding: 20px;
+  border-radius: 5px;
+  width: 91%;
+  margin: auto;
+  height: 51vh;
+}
+.btnHome {
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+}
+#test {
+  width: -webkit-fill-available;
+  height: 100vh;
+  position: absolute;
+  background-color: #7d7b7be0;
+}
+
+#divConnexion {
+  height: 57vh;
+  width: 63vh;
+  position: fixed;
+  left: 36%;
+  top: 18%;
+}
+#buttonLeaveConnection {
+  float: right;
+  border: none;
+  background-color: transparent;
+}
+/* Subscribe */
+#subscribe {
+  background-color: white;
+  box-shadow: 0 0 8px 1px grey;
+  padding: 20px;
+  border-radius: 5px;
+  width: 91%;
+  margin: auto;
+  height: 51vh;
+}
+#nameSurname {
+  display: flex;
+}
+#select {
+  display: flex;
+  justify-content: center;
+}
+#test1 {
+  width: -webkit-fill-available;
+  height: 100vh;
+  position: absolute;
+  background-color: #7d7b7be0;
+}
+
+#divSubscribe {
+  height: 57vh;
+  width: 63vh;
+  position: fixed;
+  left: 36%;
+  top: 18%;
+}
+#buttonLeaveSubscribe {
+  float: right;
+  border: none;
+  background-color: transparent;
 }
 </style>
