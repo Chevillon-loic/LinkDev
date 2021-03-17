@@ -37,7 +37,12 @@
               <div id="footerConnect">
                 <!-- .Attention, Home = Link modelé en btn -->
                 <br /><button @click="validLogin">login</button>
-                <p>Pas de compte? <a href="/subscribe">Inscrivez vous!</a></p>
+                <p>
+                  Pas de compte?
+                  <button @click="connectionToSubscribe">
+                    Inscrivez vous !
+                  </button>
+                </p>
               </div>
             </div>
           </div>
@@ -120,7 +125,6 @@
       <div id="logo">
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
         <!-- Bouton Admin connexion -->
-        <button @click="btnAdmin">Admin connect</button>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"><font-awesome-icon icon="home"/></router-link>
@@ -133,13 +137,13 @@
           <span id="connectLink">Connection</span>
         </button>
         |
-        <router-link to="/Subscribe"
-          ><span id="subscribeLink">Inscription</span></router-link
-        >
+        <button @click="linkSubscribe" id="linkSubscribe">
+          <span id="subscribeLink">Inscription</span>
+        </button>
       </div>
       <!-- sinon -->
       <div v-else>
-        <router-link to="/User"><span>Loïc</span></router-link>
+        <router-link to="/User"><span>User Name</span></router-link>
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
@@ -170,7 +174,7 @@ export default {
       selectLevel: "",
     },
     test: [],
-    divSubscribe: true,
+    divSubscribe: false,
   }),
 
   methods: {
@@ -180,10 +184,7 @@ export default {
     logout: function() {
       this.isConnected = false;
     },
-    linkConnection: function() {
-      this.divConnexion = true;
-      console.log("ehooo");
-    },
+
     // Connection
     validLogin: function() {
       // Condition connected or not
@@ -197,6 +198,9 @@ export default {
       }
       this.userConnect.push(this.userMail, this.userPassword);
       console.log(this.userConnect);
+    },
+    linkConnection: function() {
+      this.divConnexion = true;
     },
     closeConnexion: function() {
       this.divConnexion = false;
@@ -216,8 +220,15 @@ export default {
       this.test.push(this.user.selectLanguage, this.user.selectLevel);
       console.log(this.test);
     },
+    linkSubscribe: function() {
+      this.divSubscribe = true;
+    },
     closeSubscribe: function() {
       this.divSubscribe = false;
+    },
+    connectionToSubscribe: function() {
+      this.divConnexion = false;
+      this.divSubscribe = true;
     },
   },
 
@@ -225,7 +236,6 @@ export default {
     return {
       login: this.login,
       logout: this.logout,
-      btnAdmin: this.btnAdmin,
       isConnected: this.isConnected,
     };
   },
@@ -365,5 +375,11 @@ body {
   float: right;
   border: none;
   background-color: transparent;
+}
+#linkSubscribe {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
 }
 </style>
