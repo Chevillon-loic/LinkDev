@@ -27,7 +27,7 @@
             <!-- footer de "Connexion" avec bouton etc -->
             <div id="footerConnect">
               <!-- .Attention, Home = Link modelé en btn -->
-              <br /><button @click="validLogin">login</button>
+              <br /><button @click="login">login</button>
               <p>Pas de compte? <a href="/subscribe">Inscrivez vous!</a></p>
             </div>
           </div>
@@ -70,8 +70,8 @@
 <script>
 export default {
   data: () => ({
-    isConnected: false,
-    divConnexion: true,
+    isConnected: true,
+    divConnexion: false,
   }),
 
   methods: {
@@ -80,7 +80,6 @@ export default {
     },
     logout: function() {
       this.isConnected = false;
-      console.log("test");
     },
     closeConnexion: function() {
       this.divConnexion = false;
@@ -91,6 +90,7 @@ export default {
     return {
       login: this.login,
       logout: this.logout,
+      isConnected: this.isConnected,
     };
   },
 };
