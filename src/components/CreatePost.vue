@@ -14,7 +14,7 @@
         <button>PUBLIER</button>
       </div>
     </div>
-    <div v-if="isConnected == false"><h1>Créer un compte</h1></div>
+    <div v-else-if="isConnected == false"><h1>Créer un compte</h1></div>
   </div>
 </template>
 
@@ -30,6 +30,22 @@ export default {
 #CreatePostBox {
   margin: auto;
   width: 75%;
-  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 1px grey;
+}
+button {
+  padding: 5px;
+  border: none;
+  color: grey;
+  box-shadow: 0 0 2px 1px grey;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+button:hover {
+  cursor: pointer;
+
+  background-color: gray;
+  color: white;
 }
 </style>

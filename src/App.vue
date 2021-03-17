@@ -41,7 +41,7 @@ export default {
   components: { Connection, Subscribe },
 
   data: () => ({
-    isConnected: true,
+    isConnected: false,
   }),
 
   methods: {
@@ -50,7 +50,6 @@ export default {
     },
     logout: function() {
       this.isConnected = false;
-      console.log("test");
     },
     closeConnexion: function() {
       this.divConnexion = false;

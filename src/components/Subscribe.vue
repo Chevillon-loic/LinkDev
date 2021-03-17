@@ -81,7 +81,7 @@ export default {
         selectLevel: "",
       },
       test: [],
-      divSubscribe: true,
+      divSubscribe: false,
     };
   },
   methods: {

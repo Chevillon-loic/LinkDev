@@ -34,17 +34,26 @@
         <span style="text-align:left;">J'aime : {{ like }}</span>
         <span style="text-align:right">Commentaires : {{ nbComment }}</span>
       </div>
-      <div id="postFooter">
+      <div v-if="isConnected == true" id="postFooter">
         <button v-on:click.prevent="btnLike">J'aime</button>
         <!-- Les commentaires -->
-        <button v-on:click="btnCommenter" id="btnComment">commenter</button>
       </div>
+      <button v-on:click="btnCommenter" id="btnComment">
+        Afficher les commentaires
+      </button>
       <div id="postComment">
         <div v-if="burgerComment == false">
           <p class="userComment">De pseudoName : commentaires 1</p>
           <p class="userComment">De pseudoName : commentaires 2</p>
-          <textarea name="" id="" cols="90" rows="3"></textarea
-          ><button>envoyer</button>
+          <div v-if="isConnected == true">
+            <textarea name="" id="" cols="90" rows="3"></textarea
+            ><button>Commenter</button>
+          </div>
+          <div v-else-if="isConnected == false">
+            <p style="color:red">
+              Vous devez être connecter pour ajouter un commentaire
+            </p>
+          </div>
         </div>
         <div v-if="burgerComment == true"></div>
       </div>
@@ -59,6 +68,7 @@ export default {
     nbComment: String,
     pseudoName: String,
   },
+  inject: ["logout", "login", "isConnected"],
   data() {
     return {
       propsLike: true,
@@ -99,7 +109,7 @@ export default {
 }
 
 #Post:hover {
-  transform: scale(1.01);
+  transform: scale(1.001);
   box-shadow: 0 0 15px 1px grey;
 }
 #postComment {
