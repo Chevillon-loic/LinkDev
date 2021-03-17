@@ -1,26 +1,45 @@
 <template>
   <div class="home">
     <div id="homeHeader">
-      <CreatePost />
+      <!-- Box Create Post -->
+      <div id="CreatePost">
+        <!-- Si connecté (affichage box create post) -->
+        <div v-if="isConnected == true">
+          <div id="CreatePostBox">
+            <p>Créer un post</p>
+            <textarea
+              placeholder="Saisissez le contenu de votre post ici"
+              name=""
+              id=""
+              cols="80"
+              rows="5"
+            ></textarea
+            ><br /><input type="file" />
+            <button @click="btnTest">PUBLIER</button>
+          </div>
+        </div>
+        <!-- Si non connecté (affichage phrase non connecté)-->
+        <div v-else-if="isConnected == false"><h1>Créer un compte</h1></div>
+      </div>
+      <!-- Box des postes pushé -->
     </div>
     <div id="homeContent">
       <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
-      <Post pseudoName=" Alfred" like="0" nbComment="0" />
-      <Post pseudoName=" Robert" like="0" nbComment="0" />
-      <Post pseudoName=" Piapiapia" like="0" nbComment="0" />
-      <Post pseudoName=" Keskifait" like="0" nbComment="0" />
-      <Post pseudoName=" keskildit" like="0" nbComment="0" />
     </div>
   </div>
 </template>
 
 <script>
-import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 
 export default {
-  components: { CreatePost, Post },
-  inject: ["logout", "login", "isConnected"],
+  components: { Post },
+  inject: ["logout", "login", "isConnected", "btnAdmin"],
+  data() {
+    return {
+      tabPost: [], //tableau qui récuperera les push posts
+    };
+  },
 };
 </script>
 
@@ -62,5 +81,26 @@ export default {
 /* Le handle  */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+#CreatePostBox {
+  margin: auto;
+  width: 75%;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 1px grey;
+}
+button {
+  padding: 5px;
+  border: none;
+  color: grey;
+  box-shadow: 0 0 2px 1px grey;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+button:hover {
+  cursor: pointer;
+
+  background-color: gray;
+  color: white;
 }
 </style>

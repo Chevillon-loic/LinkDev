@@ -7,7 +7,7 @@
       >
     </div>
     <div id="PostContent" style="display:flex">
-      <div id="PostLeft" style="width:20%;border-right:1px solid grey">
+      <div id="PostLeft" style="width:20%;">
         <img
           style="border-radius:50%"
           height="70px"
@@ -27,10 +27,7 @@
     <div id="PostBox">
       <div></div>
       <!-- Contenu nb Like + nb Comment -->
-      <div
-        style="border-top:1px solid grey;display:flex;justify-content:space-between"
-        id="postNb"
-      >
+      <div style="display:flex;justify-content:space-between" id="postNb">
         <span style="text-align:left;">J'aime : {{ like }}</span>
         <span style="text-align:right">Commentaires : {{ nbComment }}</span>
       </div>
