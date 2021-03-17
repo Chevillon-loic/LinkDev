@@ -21,10 +21,8 @@
 <script>
 export default {
   props: {},
-  inject: ["logout", "login"],
-  data: () => ({
-    isConnected: true,
-  }),
+  inject: ["logout", "login", "isConnected"],
+  data: () => ({}),
 };
 </script>
 

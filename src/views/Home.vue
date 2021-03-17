@@ -20,7 +20,7 @@ import Post from "../components/Post";
 
 export default {
   components: { CreatePost, Post },
-  inject: ["logout", "login"],
+  inject: ["logout", "login", "isConnected"],
 };
 </script>
 

@@ -1,40 +1,7 @@
 <template>
   <div id="app">
-    <div v-if="divConnexion == true" id="test">
-      <div id="divConnexion">
-        <div class="connect">
-          <!-- Boite générale de "Connexion" -->
-          <div id="boxConnect">
-            <!-- Header de "Connexion" avec titre -->
-            <div id="headerConnect"><h3>Connexion</h3></div>
-            <!-- Contenu de "Connexion" avec input etc -->
-            <div id="contentConnect">
-              <label for="inputConnect">E-mail :</label><br />
-              <input
-                v-model="userMail"
-                id="inputConnect"
-                type="text"
-                placeholder="Mail"
-              /><br /><br />
-              <label for="inputPassword">Mot de passe :</label><br />
-              <input
-                v-model="userPassword"
-                id="inputPassword"
-                type="text"
-                placeholder="Mot de passe"
-              />
-            </div>
-            <!-- footer de "Connexion" avec bouton etc -->
-            <div id="footerConnect">
-              <!-- .Attention, Home = Link modelé en btn -->
-              <br /><button @click="validLogin">login</button>
-              <p>Pas de compte? <a href="/subscribe">Inscrivez vous!</a></p>
-            </div>
-          </div>
-        </div>
-        <button @click="closeConnexion">X</button>
-      </div>
-    </div>
+    <Connection />
+    <Subscribe />
     <!-- NAVBAR -->
     <div id="navbar">
       <!-- LOGO NAVBAR -->
@@ -47,9 +14,9 @@
       <input type="text" placeholder="Rechercher sur LinkDev" />
       <!-- SI  isConnected==TRUE alors -->
       <div v-if="isConnected == false">
-        <router-link to="/Connect"
-          ><span id="connectLink">Connection</span></router-link
-        >
+        <button @click="linkConnection" id="linkConnection">
+          <span id="connectLink">Connection</span>
+        </button>
         |
         <router-link to="/Subscribe"
           ><span id="subscribeLink">Inscription</span></router-link
@@ -68,10 +35,13 @@
 </template>
 
 <script>
+import Connection from "./components/Connection.vue";
+import Subscribe from "./components/Subscribe.vue";
 export default {
+  components: { Connection, Subscribe },
+
   data: () => ({
-    isConnected: false,
-    divConnexion: true,
+    isConnected: true,
   }),
 
   methods: {
@@ -85,12 +55,17 @@ export default {
     closeConnexion: function() {
       this.divConnexion = false;
     },
+    linkConnection: function() {
+      this.divConnexion = true;
+      console.log("ehooo");
+    },
   },
 
   provide: function() {
     return {
       login: this.login,
       logout: this.logout,
+      isConnected: this.isConnected,
     };
   },
 };
@@ -100,22 +75,6 @@ export default {
 body {
   margin: 0;
   padding: 0;
-}
-
-#test {
-  width: -webkit-fill-available;
-  height: 100vh;
-  position: absolute;
-  background-color: #7d7b7be0;
-}
-
-#divConnexion {
-  height: 57vh;
-  width: 63vh;
-  background-color: chartreuse;
-  position: fixed;
-  left: 36%;
-  top: 18%;
 }
 
 #app {
@@ -170,5 +129,11 @@ body {
   border: none;
   background-color: transparent;
   font-size: xx-large;
+}
+#linkConnection {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
 }
 </style>
