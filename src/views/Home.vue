@@ -34,7 +34,7 @@ import Post from "../components/Post";
 
 export default {
   components: { Post },
-  inject: ["logout", "login", "isConnected", "btnAdmin"],
+  inject: ["logout", "login", "isConnected"],
   data() {
     return {
       tabPost: [], //tableau qui récuperera les push posts
