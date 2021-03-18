@@ -8,6 +8,7 @@
           <div id="CreatePostBox">
             <p>Créer un post</p>
             <textarea
+              v-model="mess"
               placeholder="Saisissez le contenu de votre post ici"
               name=""
               id=""
@@ -26,7 +27,12 @@
     <div id="homeContent">
       <ul>
         <li v-for="elem in tabPost" :key="elem">
-          <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
+          <Post
+            pseudoName=" Jean Michael"
+            like="0"
+            nbComment="0"
+            :text="post.message"
+          />
         </li>
       </ul>
     </div>
@@ -42,7 +48,8 @@ export default {
   inject: ["logout", "login", "isConnected"],
   data() {
     return {
-      Post: {
+      mess: "",
+      post: {
         message: "",
         image: "",
       },
@@ -51,11 +58,14 @@ export default {
   },
   methods: {
     btnPublish: function() {
+      this.post.message = this.mess;
       let newPost = {
-        message: this.message,
+        message: this.post.message,
         image: this.image,
       };
       this.tabPost.push(newPost);
+      console.log(this.post.message);
+      this.mess = "";
     },
   },
 };

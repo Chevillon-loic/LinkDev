@@ -16,10 +16,7 @@
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-          consequuntur animi voluptate reiciendis itaque ut autem qui nobis a
-          quas ullam voluptatum, error architecto perferendis hic voluptates,
-          fugit, reprehenderit quasi.
+          {{ text }}
         </p>
       </div>
     </div>
@@ -64,6 +61,7 @@ export default {
     like: String,
     nbComment: String,
     pseudoName: String,
+    text: String,
   },
   inject: ["logout", "login", "isConnected"],
   data() {
