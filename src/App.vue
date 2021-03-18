@@ -124,7 +124,8 @@
       <!-- LOGO NAVBAR -->
       <div id="logo">
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
-        <!-- Bouton Admin connexion -->
+        <!-- Bouton Admin qui force la connexion -->
+        <button @click="btnAdmin">Bouton Admin</button>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"><font-awesome-icon icon="home"/></router-link>
@@ -178,13 +179,20 @@ export default {
   }),
 
   methods: {
+    checkLogin: function() {
+      return this.isConnected;
+    },
+
     login: function() {
       this.isConnected = true;
     },
     logout: function() {
       this.isConnected = false;
     },
-
+    // Connection admin
+    btnAdmin: function() {
+      this.isConnected = true;
+    },
     // Connection
     validLogin: function() {
       // Condition connected or not
@@ -236,7 +244,7 @@ export default {
     return {
       login: this.login,
       logout: this.logout,
-      isConnected: this.isConnected,
+      checkLogin: this.checkLogin,
     };
   },
 };

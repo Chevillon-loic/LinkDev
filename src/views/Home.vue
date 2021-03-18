@@ -4,10 +4,11 @@
       <!-- Box Create Post -->
       <div id="CreatePost">
         <!-- Si connecté (affichage box create post) -->
-        <div v-if="isConnected == true">
+        <div v-if="checkLogin() === true">
           <div id="CreatePostBox">
-            <p>Créer un post</p>
+            <p></p>
             <textarea
+              v-model="mess"
               placeholder="Saisissez le contenu de votre post ici"
               name=""
               id=""
@@ -19,20 +20,18 @@
           </div>
         </div>
         <!-- Si non connecté (affichage phrase non connecté) -->
-        <div v-else-if="isConnected == false"><h1>Créer un compte</h1></div>
+        <div v-else-if="checkLogin() === false"><h1>Créer un compte</h1></div>
       </div>
       <!-- Box des postes pushé -->
     </div>
     <div id="homeContent">
       <ul>
-        <li style="list-style-type: none;" v-for="elem in tabPost" :key="elem">
+        <li v-for="elem in tabPost" :key="elem">
           <Post
-            key="elem"
-            publication=""
             pseudoName=" Jean Michael"
             like="0"
             nbComment="0"
-            image="X"
+            :text="post.message"
           />
         </li>
       </ul>
@@ -45,16 +44,28 @@ import Post from "../components/Post";
 
 export default {
   components: { Post },
-
-  inject: ["logout", "login", "isConnected"],
+  inject: ["logout", "login", "checkLogin"],
   data() {
     return {
+      mess: "",
+      post: {
+        message: "",
+        image: "",
+      },
       tabPost: [], //tableau qui récuperera les push posts
     };
   },
   methods: {
+    // Method pour push un post dans tableau tabPost
     btnPublish: function() {
-      this.tabPost.push(Post);
+      this.post.message = this.mess;
+      let newPost = {
+        message: this.mess,
+        image: this.image,
+      };
+      this.tabPost.push(newPost);
+      console.log(this.post.message);
+      this.mess = "";
     },
   },
 };

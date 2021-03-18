@@ -16,7 +16,7 @@
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
         <p>
-          {{ publication }}
+          {{ text }}
         </p>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default {
     like: String,
     nbComment: String,
     pseudoName: String,
-    publication: String,
+    text: String,
   },
   inject: ["logout", "login", "isConnected"],
   data() {
