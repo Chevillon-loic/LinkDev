@@ -18,15 +18,22 @@
             <button @click="btnPublish">PUBLIER</button>
           </div>
         </div>
-        <!-- Si non connecté (affichage phrase non connecté)-->
+        <!-- Si non connecté (affichage phrase non connecté) -->
         <div v-else-if="isConnected == false"><h1>Créer un compte</h1></div>
       </div>
       <!-- Box des postes pushé -->
     </div>
     <div id="homeContent">
       <ul>
-        <li v-for="elem in tabPost" :key="elem">
-          <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
+        <li style="list-style-type: none;" v-for="elem in tabPost" :key="elem">
+          <Post
+            key="elem"
+            publication=""
+            pseudoName=" Jean Michael"
+            like="0"
+            nbComment="0"
+            image="X"
+          />
         </li>
       </ul>
     </div>
@@ -42,20 +49,12 @@ export default {
   inject: ["logout", "login", "isConnected"],
   data() {
     return {
-      Post: {
-        message: "",
-        image: "",
-      },
       tabPost: [], //tableau qui récuperera les push posts
     };
   },
   methods: {
     btnPublish: function() {
-      let newPost = {
-        message: this.message,
-        image: this.image,
-      };
-      this.tabPost.push(newPost);
+      this.tabPost.push(Post);
     },
   },
 };

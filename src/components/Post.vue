@@ -16,10 +16,7 @@
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-          consequuntur animi voluptate reiciendis itaque ut autem qui nobis a
-          quas ullam voluptatum, error architecto perferendis hic voluptates,
-          fugit, reprehenderit quasi.
+          {{ publication }}
         </p>
       </div>
     </div>
@@ -40,11 +37,13 @@
       </button>
       <div id="postComment">
         <div v-if="burgerComment == false">
-          <p class="userComment">De pseudoName : commentaires 1</p>
-          <p class="userComment">De pseudoName : commentaires 2</p>
+          <ul>
+            <li></li>
+          </ul>
+
           <div v-if="isConnected == true">
             <textarea name="" id="" cols="90" rows="3"></textarea
-            ><button>Commenter</button>
+            ><button @click="btnComment">Commenter</button>
           </div>
           <div v-else-if="isConnected == false">
             <p style="color:red">
@@ -64,12 +63,15 @@ export default {
     like: String,
     nbComment: String,
     pseudoName: String,
+    publication: String,
   },
   inject: ["logout", "login", "isConnected"],
   data() {
     return {
       propsLike: true,
       burgerComment: true,
+      tabComment: [],
+      comment: String,
     };
   },
   methods: {
@@ -82,6 +84,9 @@ export default {
       } else if (this.propsLike != false) {
         this.like = Number(this.like) - 1;
       }
+    },
+    btnComment: function() {
+      this.tabComment.push();
     },
     btnCommenter: function() {
       this.burgerComment = !this.burgerComment;
