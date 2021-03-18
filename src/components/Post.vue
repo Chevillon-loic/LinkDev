@@ -28,7 +28,7 @@
         <span style="text-align:left;">J'aime : {{ like }}</span>
         <span style="text-align:right">Commentaires : {{ nbComment }}</span>
       </div>
-      <div v-if="isConnected == true" id="postFooter">
+      <div v-if="checkLogin() === true" id="postFooter">
         <button v-on:click.prevent="btnLike">J'aime</button>
         <!-- Les commentaires -->
       </div>
@@ -38,14 +38,14 @@
       <div id="postComment">
         <div v-if="burgerComment == false">
           <ul>
-            <li></li>
+            <li>Comm1</li>
           </ul>
 
-          <div v-if="isConnected == true">
+          <div v-if="checkLogin() === true">
             <textarea name="" id="" cols="90" rows="3"></textarea
             ><button @click="btnComment">Commenter</button>
           </div>
-          <div v-else-if="isConnected == false">
+          <div v-else-if="checkLogin() === false">
             <p style="color:red">
               Vous devez être connecter pour ajouter un commentaire
             </p>
@@ -65,7 +65,7 @@ export default {
     pseudoName: String,
     text: String,
   },
-  inject: ["logout", "login", "isConnected"],
+  inject: ["logout", "login", "checkLogin"],
   data() {
     return {
       propsLike: true,
