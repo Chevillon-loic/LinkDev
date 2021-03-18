@@ -161,7 +161,7 @@ export default {
     userConnect: [],
     userMail: "",
     userPassword: "",
-    isConnected: false,
+    isConnected: true,
     divConnexion: false,
     // Subscribe
     users: [],
