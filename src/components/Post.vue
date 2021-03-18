@@ -37,10 +37,7 @@
       </button>
       <div id="postComment">
         <div v-if="burgerComment == false">
-          <ul>
-            <li></li>
-          </ul>
-
+          <p>Un commentaire</p>
           <div v-if="isConnected == true">
             <textarea name="" id="" cols="90" rows="3"></textarea
             ><button @click="btnComment">Commenter</button>
