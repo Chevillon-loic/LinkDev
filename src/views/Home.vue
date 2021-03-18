@@ -15,7 +15,7 @@
               rows="5"
             ></textarea
             ><br /><input type="file" />
-            <button @click="btnTest">PUBLIER</button>
+            <button @click="btnPublish">PUBLIER</button>
           </div>
         </div>
         <!-- Si non connecté (affichage phrase non connecté)-->
@@ -24,7 +24,11 @@
       <!-- Box des postes pushé -->
     </div>
     <div id="homeContent">
-      <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
+      <ul>
+        <li v-for="elem in tabPost" :key="elem">
+          <Post pseudoName=" Jean Michael" like="0" nbComment="0" />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -34,11 +38,25 @@ import Post from "../components/Post";
 
 export default {
   components: { Post },
+
   inject: ["logout", "login", "isConnected"],
   data() {
     return {
+      Post: {
+        message: "",
+        image: "",
+      },
       tabPost: [], //tableau qui récuperera les push posts
     };
+  },
+  methods: {
+    btnPublish: function() {
+      let newPost = {
+        message: this.message,
+        image: this.image,
+      };
+      this.tabPost.push(newPost);
+    },
   },
 };
 </script>
