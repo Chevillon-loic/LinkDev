@@ -20,14 +20,14 @@
               <div id="contentConnect">
                 <label for="inputConnect">E-mail :</label><br />
                 <input
-                  v-model="userMail"
+                  v-model="user.mail"
                   id="inputConnect"
                   type="text"
                   placeholder="Mail"
                 /><br /><br />
                 <label for="inputPassword">Mot de passe :</label><br />
                 <input
-                  v-model="userPassword"
+                  v-model="user.password"
                   id="inputPassword"
                   type="text"
                   placeholder="Mot de passe"
@@ -55,7 +55,7 @@
     <!-- si divsubscribe est true affiche la div -->
     <div v-if="divSubscribe == true" id="fondGris">
       <div id="divSubscribe">
-        <form id="subscribe">
+        <div id="subscribe">
           <!-- Bouton fermer la fenetre inscription -->
           <button @click="closeSubscribe" id="buttonLeaveSubscribe">
             X
@@ -81,7 +81,7 @@
               v-model="user.repeatPassword"
             />
           </div>
-          <div id="select">
+          <!-- <div id="select">
             <div>
               <label for="selectLanguage">langage maitrisé</label>
               <select
@@ -112,10 +112,10 @@
             <span v-for="item in languageUser" :key="item.selectLanguage">
               {{ item }}
             </span>
-          </div>
+          </div> -->
 
           <button @click.prevent="pushUser">S'inscrire</button>
-        </form>
+        </div>
       </div>
     </div>
     <!-- NAVBAR -->
@@ -160,10 +160,9 @@ export default {
   data: () => ({
     // Connection
     isConnect: Boolean,
-    userConnect: [],
     userMail: "",
     userPassword: "",
-    isConnected: true,
+    isConnected: false,
     divConnexion: false,
     // Subscribe
     user: {
@@ -189,24 +188,16 @@ export default {
     logout: function() {
       this.isConnected = false;
     },
+
     // Connection admin
+
     btnAdmin: function() {
       this.isConnected = true;
     },
+
     // Connection
+
     validLogin: async function() {
-      // Condition connected or not
-      this.userConnect.userMail = this.userMail;
-      this.userConnect.userPassword = this.userPassword;
-
-      if (this.userMail & this.userPassword) {
-        this.isConnect = true;
-      } else {
-        this.isConnect = false;
-      }
-      this.userConnect.push(this.userMail, this.userPassword);
-      console.log(this.userConnect);
-
       // FETCH CONNEXION
       const body = {
         email: this.user.email,
@@ -240,6 +231,7 @@ export default {
         console.log(error);
       }
     },
+
     linkConnection: function() {
       this.divConnexion = true;
     },
