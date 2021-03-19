@@ -6,6 +6,7 @@
         <div id="userProfile">
           <div>
             <img
+              id="imgUser"
               style="border-radius:50%"
               height="70px"
               src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"

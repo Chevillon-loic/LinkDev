@@ -42,7 +42,7 @@
           </ul>
 
           <div v-if="checkLogin() === true">
-            <textarea name="" id="" cols="90" rows="3"></textarea
+            <textarea name="" id="textAreaPosts" cols="90" rows="3"></textarea
             ><button @click="btnComment">Commenter</button>
           </div>
           <div v-else-if="checkLogin() === false">
@@ -119,5 +119,9 @@ export default {
 }
 .userComment {
   text-align: justify;
+}
+#textAreaPosts {
+  width: 80vh;
+  resize: none;
 }
 </style>

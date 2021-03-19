@@ -5,7 +5,7 @@
     <!-- DIV CONNECTION -->
     <div id="connection">
       <!-- si divConnexion est true affiche la div -->
-      <div v-if="divConnexion == true" id="test">
+      <div v-if="divConnexion == true" id="fondGris">
         <div id="divConnexion">
           <div class="connect">
             <!-- Boite générale de "Connexion" -->
@@ -53,9 +53,10 @@
     <!-- DIV SUBSCRIBE -->
     <!-- DIV SUBSCRIBE -->
     <!-- si divsubscribe est true affiche la div -->
-    <div v-if="divSubscribe == true" id="test1">
+    <div v-if="divSubscribe == true" id="fondGris">
       <div id="divSubscribe">
         <form id="subscribe">
+          <!-- Bouton fermer la fenetre inscription -->
           <button @click="closeSubscribe" id="buttonLeaveSubscribe">
             X
           </button>
@@ -108,7 +109,7 @@
             <button @click.prevent="pushLanguage">Ajout langage</button>
           </div>
           <div>
-            <span v-for="item in test" :key="item.selectLanguage">
+            <span v-for="item in languageUser" :key="item.selectLanguage">
               {{ item }}
             </span>
           </div>
@@ -174,7 +175,7 @@ export default {
       selectLanguage: "",
       selectLevel: "",
     },
-    test: [],
+    languageUser: [],
     divSubscribe: false,
   }),
 
@@ -225,8 +226,7 @@ export default {
       }
     },
     pushLanguage: function() {
-      this.test.push(this.user.selectLanguage, this.user.selectLevel);
-      console.log(this.test);
+      this.languageUser.push(this.user.selectLanguage, this.user.selectLevel);
     },
     linkSubscribe: function() {
       this.divSubscribe = true;
@@ -329,7 +329,7 @@ body {
   color: black;
   text-decoration: none;
 }
-#test {
+#fondGris {
   width: -webkit-fill-available;
   height: 100vh;
   position: absolute;
@@ -364,12 +364,6 @@ body {
 #select {
   display: flex;
   justify-content: center;
-}
-#test1 {
-  width: -webkit-fill-available;
-  height: 100vh;
-  position: absolute;
-  background-color: #7d7b7be0;
 }
 
 #divSubscribe {

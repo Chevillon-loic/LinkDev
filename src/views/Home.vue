@@ -11,7 +11,7 @@
               v-model="mess"
               placeholder="Saisissez le contenu de votre post ici"
               name=""
-              id=""
+              id="textAreaPost"
               cols="80"
               rows="5"
             ></textarea
@@ -130,5 +130,9 @@ button:hover {
 
   background-color: gray;
   color: white;
+}
+#textAreaPost {
+  resize: none;
+  width: inherit;
 }
 </style>
