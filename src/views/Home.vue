@@ -33,7 +33,7 @@
       <!-- Box des postes pushé -->
     </div>
     <div id="homeContent">
-      <ul>
+      <ul style="list-style-type: none;">
         <li v-for="elem in tabPost" :key="elem">
           <Post
             pseudoName=" Jean Michael"
