@@ -115,6 +115,10 @@
           </div> -->
 
           <button @click.prevent="pushUser">S'inscrire</button>
+          <p>
+            Déja membre ?
+            <button @click="subscribeToConnection">Connectez-vous</button>
+          </p>
         </div>
       </div>
     </div>
@@ -125,8 +129,6 @@
       <!-- LOGO NAVBAR -->
       <div id="logo">
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
-        <!-- Bouton Admin qui force la connexion -->
-        <button @click="btnAdmin">Bouton Admin</button>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"><font-awesome-icon icon="home"/></router-link>
@@ -145,7 +147,9 @@
       </div>
       <!-- sinon -->
       <div v-else>
-        <router-link to="/User"><span>User Name</span></router-link>
+        <router-link to="/User"
+          ><span> {{ logMail }} </span></router-link
+        >
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
@@ -160,10 +164,10 @@ export default {
   data: () => ({
     // Connection
     isConnect: Boolean,
+    logMail: "",
+    logPassword: "",
     isConnected: false,
     divConnexion: false,
-    logPassword: "",
-    logMail: "",
     // Subscribe
     user: {
       pseudo: "",
@@ -187,12 +191,6 @@ export default {
     },
     logout: function() {
       this.isConnected = false;
-    },
-
-    // Connection admin
-
-    btnAdmin: function() {
-      this.isConnected = true;
     },
 
     // Connection
@@ -223,7 +221,10 @@ export default {
         );
         if (response.status != 200) {
           this.isConnected = false;
-        } else this.isConnected = true;
+        } else {
+          this.isConnected = true;
+          this.divConnexion = false;
+        }
 
         console.log(response);
 
@@ -271,6 +272,12 @@ export default {
           "https://link-dev-api.osc-fr1.scalingo.io/register",
           options
         );
+
+        if (response.status == 200) {
+          this.divSubscribe = false;
+          this.divConnexion = true;
+        }
+
         console.log(response);
         const data = await response.json();
         console.log(data);
@@ -290,6 +297,10 @@ export default {
     connectionToSubscribe: function() {
       this.divConnexion = false;
       this.divSubscribe = true;
+    },
+    subscribeToConnection: function() {
+      this.divSubscribe = false;
+      this.divConnexion = true;
     },
   },
 
@@ -326,7 +337,7 @@ body {
 #navbar {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #565656;
   height: 8vh;
 }
@@ -341,6 +352,7 @@ body {
 }
 #logo {
   color: white;
+  margin-left: 15px;
 }
 #connectLink::before,
 #subscribeLink::before {
@@ -361,6 +373,10 @@ body {
   border: none;
   background-color: transparent;
   font-size: xx-large;
+  margin-right: 15px;
+}
+#buttonLogout:hover {
+  cursor: pointer;
 }
 #linkConnection {
   border: none;
