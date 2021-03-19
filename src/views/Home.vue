@@ -22,7 +22,7 @@
         <!-- Si non connecté (affichage phrase non connecté) -->
         <div v-else-if="checkLogin() === false">
           <p>Vous devez être connecté pour pouvoir ajouter une publication</p>
-          <button @click="publiConnect">Se connecter</button>
+          <button @click="linkConnection">Se connecter</button>
         </div>
       </div>
       <!-- Box des postes pushé -->
@@ -69,10 +69,6 @@ export default {
       this.tabPost.push(newPost);
       console.log(this.post.message);
       this.mess = "";
-    },
-
-    publiConnect: function() {
-      linkConnection();
     },
   },
 };
