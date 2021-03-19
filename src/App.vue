@@ -166,7 +166,6 @@ export default {
     isConnected: true,
     divConnexion: false,
     // Subscribe
-    users: [],
     user: {
       pseudo: "",
       email: "",
@@ -195,7 +194,7 @@ export default {
       this.isConnected = true;
     },
     // Connection
-    validLogin: function() {
+    validLogin: async function() {
       // Condition connected or not
       this.userConnect.userMail = this.userMail;
       this.userConnect.userPassword = this.userPassword;
@@ -207,6 +206,39 @@ export default {
       }
       this.userConnect.push(this.userMail, this.userPassword);
       console.log(this.userConnect);
+
+      // FETCH CONNEXION
+      const body = {
+        email: this.user.email,
+        password: this.user.password,
+      };
+
+      const token = this.user.email;
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        },
+
+        body: JSON.stringify(body),
+      };
+
+      try {
+        const response = await fetch(
+          "https://link-dev-api.osc-fr1.scalingo.io/login",
+          options
+        );
+
+        console.log(response);
+
+        const data = await response.json();
+
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     },
     linkConnection: function() {
       this.divConnexion = true;
@@ -215,7 +247,17 @@ export default {
       this.divConnexion = false;
     },
     // Subscribe
-    pushUser: function() {
+    pushUser: async function() {
+      /* Conditions Subscribe */
+      if (this.user.password != this.user.repeatPassword) {
+        alert("echec mdp");
+        return;
+      }
+      if (this.user.pseudo == "") {
+        alert("Entrez un pseudo");
+        return;
+      }
+
       /* Envois requêtes Subscribe */
       const body = {
         name: this.user.pseudo,
@@ -230,25 +272,15 @@ export default {
         body: JSON.stringify(body),
       };
       try {
-        const response = fetch(
+        const response = await fetch(
           "https://link-dev-api.osc-fr1.scalingo.io/register",
           options
         );
         console.log(response);
-        const data = response.json();
+        const data = await response.json();
         console.log(data);
       } catch (error) {
         console.log(error);
-      }
-
-      /* Conditions Subscribe */
-      if (this.user.password == this.user.repeatPassword) {
-        this.users.push(this.user);
-      } else {
-        alert("echec mdp");
-      }
-      if (this.user.pseudo == "") {
-        alert("Entrez un pseudo");
       }
     },
     pushLanguage: function() {
