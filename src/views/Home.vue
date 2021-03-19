@@ -22,8 +22,8 @@
         <!-- Si non connecté (affichage phrase non connecté) -->
         <div v-else-if="checkLogin() === false">
           <p>Vous devez être connecté pour pouvoir ajouter une publication</p>
+          <button @click="publiConnect">Se connecter</button>
         </div>
-        <button>Se connecter</button>
       </div>
       <!-- Box des postes pushé -->
     </div>
@@ -47,7 +47,7 @@ import Post from "../components/Post";
 
 export default {
   components: { Post },
-  inject: ["logout", "login", "checkLogin"],
+  inject: ["logout", "login", "checkLogin", "linkConnection"],
   data() {
     return {
       mess: "",
@@ -69,6 +69,10 @@ export default {
       this.tabPost.push(newPost);
       console.log(this.post.message);
       this.mess = "";
+    },
+
+    publiConnect: function() {
+      linkConnection();
     },
   },
 };
