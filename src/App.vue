@@ -216,6 +216,32 @@ export default {
     },
     // Subscribe
     pushUser: function() {
+      /* Envois requêtes Subscribe */
+      const body = {
+        name: this.user.pseudo,
+        email: this.user.email,
+        password: this.user.password,
+      };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      };
+      try {
+        const response = fetch(
+          "https://link-dev-api.osc-fr1.scalingo.io/register",
+          options
+        );
+        console.log(response);
+        const data = response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+
+      /* Conditions Subscribe */
       if (this.user.password == this.user.repeatPassword) {
         this.users.push(this.user);
       } else {
@@ -246,6 +272,37 @@ export default {
       logout: this.logout,
       checkLogin: this.checkLogin,
     };
+  },
+
+  /* premiere requete pour Register */
+  async log() {
+    const body = {
+      name: this.user.pseudo,
+      email: this.user.email,
+      password: this.user.password,
+    };
+
+    const options = {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "applications/json",
+      },
+      body: JSON.stringify(body),
+    };
+    try {
+      const response = await fetch(
+        "https://link-dev-api.osc-fr1.scalingo.io/register",
+        options
+      );
+
+      console.log(response);
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>

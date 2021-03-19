@@ -40,7 +40,6 @@
           <ul>
             <li>Comm1</li>
           </ul>
-
           <div v-if="checkLogin() === true">
             <textarea name="" id="textAreaPosts" cols="90" rows="3"></textarea
             ><button @click="btnComment">Commenter</button>
