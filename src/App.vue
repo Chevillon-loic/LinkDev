@@ -20,14 +20,14 @@
               <div id="contentConnect">
                 <label for="inputConnect">E-mail :</label><br />
                 <input
-                  v-model="user.mail"
+                  v-model="logMail"
                   id="inputConnect"
                   type="text"
                   placeholder="Mail"
                 /><br /><br />
                 <label for="inputPassword">Mot de passe :</label><br />
                 <input
-                  v-model="user.password"
+                  v-model="logPassword"
                   id="inputPassword"
                   type="text"
                   placeholder="Mot de passe"
@@ -198,8 +198,8 @@ export default {
     validLogin: async function() {
       // FETCH CONNEXION
       const body = {
-        email: this.user.email,
-        password: this.user.password,
+        email: this.logMail,
+        password: this.logPassword,
       };
 
       const token = this.user.email;
