@@ -488,15 +488,15 @@ body {
   left: 0;
   background: linear-gradient(
     45deg,
-    #ff0000,
-    #00f0f0,
-    #00ff00,
-    #0000ff,
-    #ff0000,
-    #00f0f0,
-    #00ff00,
-    #0000ff,
-    #f00f0f
+    #ffffff,
+    #ffffff,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #ffffff,
+    #ffffff
   );
   width: 100%;
   height: 100%;
