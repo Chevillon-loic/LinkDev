@@ -125,8 +125,6 @@
       <!-- LOGO NAVBAR -->
       <div id="logo">
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
-        <!-- Bouton Admin qui force la connexion -->
-        <button @click="btnAdmin">Bouton Admin</button>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"><font-awesome-icon icon="home"/></router-link>
@@ -145,7 +143,9 @@
       </div>
       <!-- sinon -->
       <div v-else>
-        <router-link to="/User"><span>User Name</span></router-link>
+        <router-link to="/User"
+          ><span>{{ token.name }}</span></router-link
+        >
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
@@ -173,6 +173,7 @@ export default {
       selectLanguage: "",
       selectLevel: "",
     },
+    userName: "",
     languageUser: [],
     divSubscribe: false,
   }),
@@ -187,12 +188,6 @@ export default {
     },
     logout: function() {
       this.isConnected = false;
-    },
-
-    // Connection admin
-
-    btnAdmin: function() {
-      this.isConnected = true;
     },
 
     // Connection
@@ -221,9 +216,12 @@ export default {
           "https://link-dev-api.osc-fr1.scalingo.io/login",
           options
         );
+
         if (response.status != 200) {
           this.isConnected = false;
-        } else this.isConnected = true;
+        } else {
+          this.isConnected = true;
+        }
 
         console.log(response);
 

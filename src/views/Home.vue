@@ -20,7 +20,10 @@
           </div>
         </div>
         <!-- Si non connecté (affichage phrase non connecté) -->
-        <div v-else-if="checkLogin() === false"><h1>Créer un compte</h1></div>
+        <div v-else-if="checkLogin() === false">
+          <p>Vous devez être connecté pour pouvoir ajouter une publication</p>
+        </div>
+        <button>Se connecter</button>
       </div>
       <!-- Box des postes pushé -->
     </div>
