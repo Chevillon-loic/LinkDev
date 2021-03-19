@@ -4,7 +4,14 @@
       <div>
         <p>Page du profil</p>
         <div id="userProfile">
-          <p>test</p>
+          <div>
+            <img
+              style="border-radius:50%"
+              height="70px"
+              src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+              alt="photo de profil"
+            />
+          </div>
         </div>
       </div>
     </div>
