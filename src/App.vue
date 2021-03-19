@@ -160,8 +160,6 @@ export default {
   data: () => ({
     // Connection
     isConnect: Boolean,
-    userMail: "",
-    userPassword: "",
     isConnected: false,
     divConnexion: false,
     // Subscribe
