@@ -6,7 +6,7 @@
     <div id="connection">
       <!-- si divConnexion est true affiche la div -->
       <div v-if="divConnexion == true" id="fondGris">
-        <div id="divConnexion">
+        <div id="divConnexion" class="box">
           <div class="connect">
             <!-- Boite générale de "Connexion" -->
             <div id="boxConnect">
@@ -54,27 +54,27 @@
     <!-- DIV SUBSCRIBE -->
     <!-- si divsubscribe est true affiche la div -->
     <div v-if="divSubscribe == true" id="fondGris">
-      <div id="divSubscribe">
+      <div id="divSubscribe" class="box">
         <div id="subscribe">
           <!-- Bouton fermer la fenetre inscription -->
           <button @click="closeSubscribe" id="buttonLeaveSubscribe">
             X
           </button>
-          <h1>Inscription</h1>
+          <h3>Inscription</h3>
           <div id="pseudo">
-            <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" v-model="user.pseudo" />
+            <label for="pseudo">Pseudo</label><br />
+            <input type="text" name="pseudo" v-model="user.pseudo" /><br />
           </div>
           <div id="divEmail">
-            <label for="email">E-mail</label>
+            <label for="email">E-mail</label><br />
             <input type="text" name="email" v-model="user.email" />
           </div>
           <div>
-            <label for="password">Mot de passe</label>
+            <label for="password">Mot de passe</label><br />
             <input type="text" name="password" v-model="user.password" />
           </div>
           <div>
-            <label for="repeatPassword">Répéter le mot de passe</label>
+            <label for="repeatPassword">Répéter le mot de passe</label><br />
             <input
               type="text"
               name="repeatPassword"
@@ -477,6 +477,49 @@ body {
   color: white;
   font-size: 17px;
 }
-h1 {
+
+/* test */
+
+.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #00f0f0,
+    #00ff00,
+    #0000ff,
+    #ff0000,
+    #00f0f0,
+    #00ff00,
+    #0000ff,
+    #f00f0f
+  );
+  width: 100%;
+  height: 100%;
+  transform: scale(1.02);
+  z-index: -1;
+  background-size: 500%;
+  animation: animate 20s infinite;
+  border-radius: 10px;
+}
+
+.box::after {
+  filter: blur(20px);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
 </style>
