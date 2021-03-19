@@ -221,6 +221,9 @@ export default {
           "https://link-dev-api.osc-fr1.scalingo.io/login",
           options
         );
+        if (response.status != 200) {
+          this.isConnected = false;
+        } else this.isConnected = true;
 
         console.log(response);
 
