@@ -16,7 +16,8 @@
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
         <p>
-          {{ text }}
+          {{ text }}Le text en brute ici avec possibilité de mettre une image
+          (ou pas)
         </p>
       </div>
     </div>
@@ -37,16 +38,21 @@
       </button>
       <div id="postComment">
         <div v-if="burgerComment == false">
-          <ul>
-            <li>Comm1</li>
+          <ul style=";text-align:left">
+            <li style="list-style-type: none">Commentaires 1</li>
+            <li style="list-style-type: none">Commentaires 2</li>
+            <li style="list-style-type: none">Commentaires 3</li>
           </ul>
           <div v-if="checkLogin() === true">
             <textarea name="" id="textAreaPosts" cols="90" rows="3"></textarea
             ><button @click="btnComment">Commenter</button>
           </div>
           <div v-else-if="checkLogin() === false">
-            <p style="color:red">
-              Vous devez être connecter pour ajouter un commentaire
+            <p style=" color : grey; font-size : 15px">
+              - Vous devez être
+              <button id="connectComent" @click="linkConnection">
+                connecté</button
+              >pour pouvoir ajouter une publications -
             </p>
           </div>
         </div>
@@ -95,6 +101,19 @@ export default {
 </script>
 
 <style>
+#connectComent {
+  color: grey;
+  border: transparent;
+  box-shadow: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 15px;
+}
+#connectComent:hover {
+  background-color: grey;
+  box-shadow: 0 0 2px 1px grey;
+  color: white;
+}
 #Post {
   background-color: #f1f1f1;
   padding: 10px;
