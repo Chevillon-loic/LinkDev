@@ -131,7 +131,9 @@
         <router-link to="/"><h1>[LinkDev]</h1></router-link>
       </div>
       <!-- BOUTON ACCUEIL -->
-      <router-link to="/"><font-awesome-icon icon="home"/></router-link>
+      <router-link to="/"
+        ><font-awesome-icon id="faHome" icon="home"
+      /></router-link>
       <!-- BARRE DE RECHERCHE -->
       <input type="text" placeholder="Rechercher sur LinkDev" />
       <!-- SI  isConnected==TRUE alors -->
@@ -282,7 +284,7 @@ export default {
 
         console.log(response);
         const data = await response.json();
-        console.log(data);
+        console.log(data.name);
       } catch (error) {
         console.log(error);
       }
@@ -318,6 +320,17 @@ export default {
 </script>
 
 <style>
+#faHome {
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 5px;
+}
+#faHome:hover {
+  color: grey;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 2px 1px white;
+}
 body {
   margin: 0;
   padding: 0;
@@ -366,12 +379,6 @@ body {
   content: " / >";
 }
 
-#navbar a.router-link-exact-active {
-  border-bottom: 1px solid red;
-}
-#navbar a:hover {
-  color: red;
-}
 #buttonLogout {
   border: none;
   background-color: transparent;
@@ -382,10 +389,24 @@ body {
   cursor: pointer;
 }
 #linkConnection {
+  padding: 10px;
   border: none;
   background-color: transparent;
   color: white;
   font-size: 17px;
+  cursor: pointer;
+}
+#linkConnection:hover,
+#subscribeLink:hover {
+  padding: 10px;
+  color: grey;
+  background-color: white;
+  box-shadow: 0 0 4px 1px white;
+  border-radius: 5px;
+}
+#subscribeLink {
+  cursor: pointer;
+  padding: 10px;
 }
 #boxConnect {
   background-color: white;
@@ -455,5 +476,7 @@ body {
   background-color: transparent;
   color: white;
   font-size: 17px;
+}
+h1 {
 }
 </style>

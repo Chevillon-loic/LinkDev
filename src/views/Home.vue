@@ -21,8 +21,13 @@
         </div>
         <!-- Si non connecté (affichage phrase non connecté) -->
         <div v-else-if="checkLogin() === false">
-          <p>Vous devez être connecté pour pouvoir ajouter une publication</p>
-          <button @click="linkConnection">Se connecter</button>
+          <p style=" color : grey; font-size : 15px">
+            Vous devez être
+            <button id="btnHeader" @click="linkConnection">
+              connecté
+            </button>
+            pour pouvoir ajouter une publication
+          </p>
         </div>
       </div>
       <!-- Box des postes pushé -->
@@ -75,6 +80,20 @@ export default {
 </script>
 
 <style scoped>
+/* Bouton "se connecter" header */
+#btnHeader {
+  color: grey;
+  border: transparent;
+  box-shadow: none;
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 15px;
+}
+#btnHeader:hover {
+  background-color: grey;
+  box-shadow: 0 0 2px 1px grey;
+  color: white;
+}
 #homeHeader,
 #homeContent {
   padding: 10px;
