@@ -181,7 +181,6 @@ export default {
       selectLanguage: "",
       selectLevel: "",
     },
-    userName: "",
     languageUser: [],
     divSubscribe: false,
   }),
@@ -367,16 +366,14 @@ body {
 }
 #logo {
   font-size: 35px;
-  padding: 2px;
+  padding: 5px;
   margin: 0px;
   color: white;
   margin: 0 15px;
 }
 #logo:hover {
-  background-color: white;
-  color: grey;
+  background-color: rgb(73, 73, 73);
   border-radius: 5px;
-  box-shadow: 0 0 4px 1px white;
 }
 #connectLink::before,
 #subscribeLink::before {
