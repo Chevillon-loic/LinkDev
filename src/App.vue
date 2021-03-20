@@ -36,10 +36,12 @@
               <!-- footer de "Connexion" avec bouton etc -->
               <div id="footerConnect">
                 <!-- .Attention, Home = Link modelé en btn -->
-                <br /><button @click="validLogin">login</button>
-                <p>
+                <br /><button class="btnLogin" @click="validLogin">
+                  login
+                </button>
+                <p style="font-style : italic; color:grey; font-size :15px">
                   Pas de compte?
-                  <button @click="connectionToSubscribe">
+                  <button class="btnLogin" @click="connectionToSubscribe">
                     Inscrivez vous !
                   </button>
                 </p>
@@ -127,15 +129,15 @@
     <!-- NAVBAR -->
     <div id="navbar">
       <!-- LOGO NAVBAR -->
-      <div id="logo">
-        <router-link to="/"><h1>[LinkDev]</h1></router-link>
+      <div id="logos">
+        <router-link to="/"><p id="logo">[LinkDev]</p></router-link>
       </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"
         ><font-awesome-icon id="faHome" icon="home"
       /></router-link>
       <!-- BARRE DE RECHERCHE -->
-      <input type="text" placeholder="Rechercher sur LinkDev" />
+      <input type="text" placeholder="Rechercher sur LinkDev " />
       <!-- SI  isConnected==TRUE alors -->
       <div v-if="isConnected == false">
         <!-- Fait apparaitre la div connection -->
@@ -326,10 +328,7 @@ export default {
   border-radius: 5px;
 }
 #faHome:hover {
-  color: grey;
-  padding: 10px;
-  background-color: white;
-  box-shadow: 0 0 2px 1px white;
+  background-color: rgb(73, 73, 73);
 }
 body {
   margin: 0;
@@ -367,8 +366,17 @@ body {
   color: white;
 }
 #logo {
+  font-size: 35px;
+  padding: 2px;
+  margin: 0px;
   color: white;
-  margin-left: 15px;
+  margin: 0 15px;
+}
+#logo:hover {
+  background-color: white;
+  color: grey;
+  border-radius: 5px;
+  box-shadow: 0 0 4px 1px white;
 }
 #connectLink::before,
 #subscribeLink::before {
@@ -381,12 +389,16 @@ body {
 
 #buttonLogout {
   border: none;
+  margin: 0 20px;
   background-color: transparent;
-  font-size: xx-large;
-  margin-right: 15px;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
 }
 #buttonLogout:hover {
   cursor: pointer;
+  background-color: rgb(73, 73, 73);
 }
 #linkConnection {
   padding: 10px;
@@ -399,9 +411,7 @@ body {
 #linkConnection:hover,
 #subscribeLink:hover {
   padding: 10px;
-  color: grey;
-  background-color: white;
-  box-shadow: 0 0 4px 1px white;
+  background-color: rgb(73, 73, 73);
   border-radius: 5px;
 }
 #subscribeLink {
@@ -477,7 +487,27 @@ body {
   color: white;
   font-size: 17px;
 }
-
+/* Style Input connexion */
+#inputConnect,
+#inputPassword {
+  border: none;
+  border-bottom: 2px solid grey;
+  margin: 10px;
+  padding: 5px;
+}
+.btnLogin {
+  background-color: transparent;
+  color: grey;
+  border: none;
+  border: 2px solid grey;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btnLogin:hover {
+  color: white;
+  background-color: grey;
+  box-shadow: 0 0 6px 1px grey;
+}
 /* test */
 
 .box::before,
@@ -488,15 +518,15 @@ body {
   left: 0;
   background: linear-gradient(
     45deg,
-    #ff0000,
-    #00f0f0,
-    #00ff00,
-    #0000ff,
-    #ff0000,
-    #00f0f0,
-    #00ff00,
-    #0000ff,
-    #f00f0f
+    #ffffff,
+    #ffffff,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #ffffff,
+    #ffffff
   );
   width: 100%;
   height: 100%;
