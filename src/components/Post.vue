@@ -27,7 +27,9 @@
       <!-- Contenu nb Like + nb Comment -->
       <div style="display:flex;justify-content:space-between" id="postNb">
         <span style="text-align:left;">J'aime : {{ like }}</span>
-        <span style="text-align:right">Commentaires : {{ nbComment }}</span>
+        <span style="text-align:right"
+          >Commentaires : {{ tabComment.length + 1 }}</span
+        >
       </div>
       <div v-if="checkLogin() === true" id="postFooter">
         <button v-on:click.prevent="btnLike">J'aime</button>
@@ -39,12 +41,23 @@
       <div id="postComment">
         <div v-if="burgerComment == false">
           <ul style=";text-align:left">
-            <li style="list-style-type: none">Commentaires 1</li>
-            <li style="list-style-type: none">Commentaires 2</li>
-            <li style="list-style-type: none">Commentaires 3</li>
+            <li style="list-style-type: none">Oh my god !!</li>
+            <li
+              v-for="item in tabComment"
+              :key="item"
+              style="list-style-type: none"
+            >
+              {{ item }}
+            </li>
           </ul>
           <div v-if="checkLogin() === true">
-            <textarea name="" id="textAreaPosts" cols="90" rows="3"></textarea
+            <textarea
+              name=""
+              v-model="commentaire"
+              id="textAreaPosts"
+              cols="90"
+              rows="3"
+            ></textarea
             ><button @click="btnComment">Commenter</button>
           </div>
           <div v-else-if="checkLogin() === false">
@@ -76,6 +89,7 @@ export default {
       propsLike: true,
       burgerComment: true,
       tabComment: [],
+      commentaire: "",
       comment: String,
     };
   },
@@ -91,7 +105,8 @@ export default {
       }
     },
     btnComment: function() {
-      this.tabComment.push();
+      this.tabComment.push(this.commentaire);
+      this.commentaire = "";
     },
     btnCommenter: function() {
       this.burgerComment = !this.burgerComment;

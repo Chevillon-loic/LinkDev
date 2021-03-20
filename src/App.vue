@@ -135,7 +135,9 @@
         ><font-awesome-icon id="faHome" icon="home"
       /></router-link>
       <!-- BARRE DE RECHERCHE -->
+
       <input type="text" placeholder="Rechercher sur LinkDev" />
+
       <!-- SI  isConnected==TRUE alors -->
       <div v-if="isConnected == false">
         <!-- Fait apparaitre la div connection -->
@@ -155,6 +157,7 @@
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
+        <button @click="checkToken">oPLPLPLPL</button>
       </div>
     </div>
     <router-view />
@@ -164,7 +167,7 @@
 <script>
 export default {
   data: () => ({
-    token: "",
+    tokenUser: "",
     // Connection
     isConnect: Boolean,
     logMail: "",
@@ -186,36 +189,37 @@ export default {
 
   /* Options de la requête */
 
-  mounted: async function() {
-    const token = this.user.email;
-
-    const options = {
-      method: "GET", // Verbe
-      headers: {
-        Authorization: "bearer " + token,
-      },
-    };
-
-    /* Tentative de requête */
-    try {
-      /* Envoi de la requête */
-      const response = await fetch(
-        "https://link-dev-api.osc-fr1.scalingo.io/user",
-        options
-      );
-
-      console.log(response); // Réponse
-
-      const data = await response.json(); // Lire la réponse au format JSON
-
-      console.log(data); // Body de la réponse
-    } catch (error) {
-      /* En cas d'erreur lors de l'exécutino de la requête */
-      console.log(error);
-    }
-  },
-
   methods: {
+    checkToken: async function() {
+      const token = this.tokenUser.value;
+
+      const options = {
+        method: "GET", // Verbe
+        headers: {
+          Authorization: "bearer " + token,
+        },
+      };
+
+      /* Tentative de requête */
+      try {
+        /* Envoi de la requête */
+        const response = await fetch(
+          "https://link-dev-api.osc-fr1.scalingo.io/user",
+          options
+        );
+
+        console.log(response); // Réponse
+        console.log(this.tokenUser);
+
+        const data = await response.json(); // Lire la réponse au format JSON
+
+        console.log(data); // Body de la réponse
+      } catch (error) {
+        /* En cas d'erreur lors de l'exécutino de la requête */
+        console.log(error);
+      }
+    },
+
     checkLogin: function() {
       return this.isConnected;
     },
@@ -259,9 +263,8 @@ export default {
         } else {
           this.isConnected = true;
           this.divConnexion = false;
-          this.token = token;
-          console.log(this.token);
         }
+        console.log("e");
 
         console.log(response);
 
