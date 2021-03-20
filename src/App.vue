@@ -180,7 +180,6 @@ export default {
       selectLanguage: "",
       selectLevel: "",
     },
-    userName: "",
     languageUser: [],
     divSubscribe: false,
   }),
@@ -318,7 +317,7 @@ export default {
 
         console.log(response);
         const data = await response.json();
-        console.log(data);
+        console.log(data.name);
       } catch (error) {
         console.log(error);
       }
