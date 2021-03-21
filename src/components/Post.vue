@@ -15,10 +15,7 @@
         />
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
-        <p>
-          {{ text }}Le text en brute ici avec possibilité de mettre une image
-          (ou pas)
-        </p>
+        <p>{{ text }}Lore</p>
       </div>
     </div>
 
@@ -41,8 +38,11 @@
         </button>
       </span>
       <div id="postComment">
-        <div v-if="burgerComment == false">
-          <ul style=";text-align:left">
+        <div
+          style="padding:10px; margin-top : 10px"
+          v-if="burgerComment == false"
+        >
+          <ul style="text-align:left">
             <li style="list-style-type: none">Oh my god !!</li>
             <li
               v-for="item in tabComment"
@@ -54,6 +54,8 @@
           </ul>
           <div v-if="checkLogin() === true">
             <textarea
+              style="margin :5px"
+              placeholder="Saisissez un Commentaire ici"
               name=""
               v-model="commentaire"
               id="textAreaPosts"
