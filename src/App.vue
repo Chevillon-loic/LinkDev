@@ -63,7 +63,7 @@
         <div id="subscribe">
           <!-- Bouton fermer la fenetre inscription -->
           <button @click="closeSubscribe" id="buttonLeaveSubscribe">
-            X
+            <font-awesome-icon icon="times" />
           </button>
           <h3>Inscription</h3>
           <div id="pseudo">
@@ -189,6 +189,7 @@
       </div>
     </div>
     <router-view />
+    <footer>&copy; - DevLink Property 2021</footer>
   </div>
 </template>
 
@@ -508,7 +509,8 @@ body {
   left: 36%;
   top: 18%;
 }
-#buttonLeaveConnection {
+#buttonLeaveConnection,
+#buttonLeaveSubscribe {
   font-size: 15px;
   padding: auto;
   border: none;
@@ -516,7 +518,8 @@ body {
   float: right;
   background-color: transparent;
 }
-#buttonLeaveConnection:hover {
+#buttonLeaveConnection:hover,
+#buttonLeaveSubscribe:hover {
   cursor: pointer;
   margin: auto;
   padding: auto;
@@ -548,11 +551,6 @@ body {
   position: fixed;
   left: 36%;
   top: 18%;
-}
-#buttonLeaveSubscribe {
-  float: right;
-  border: none;
-  background-color: transparent;
 }
 #linkSubscribe {
   border: none;
