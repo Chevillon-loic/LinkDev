@@ -185,7 +185,7 @@
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
-        <!-- <button @click="checkToken">CheckToken</button> -->
+        <button @click="checkToken">CheckToken</button>
       </div>
     </div>
     <router-view />
@@ -220,7 +220,7 @@ export default {
 
   methods: {
     checkToken: async function() {
-      const token = this.tokenUser.value;
+      const token = this.tokenUser;
 
       const options = {
         method: "GET", // Verbe
@@ -269,13 +269,10 @@ export default {
         password: this.logPassword,
       };
 
-      const token = this.user.email;
-
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "bearer " + token,
         },
 
         body: JSON.stringify(body),
@@ -293,11 +290,11 @@ export default {
           this.isConnected = true;
           this.divConnexion = false;
         }
-        console.log("e");
 
         console.log(response);
 
         const data = await response.json();
+        this.tokenUser = data.token;
 
         console.log(data);
       } catch (error) {
