@@ -8,11 +8,14 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 
 library.add(faUserSecret)
 library.add(faHome)
 library.add(faPowerOff)
 library.add(faSearch)
+library.add(faTimes)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

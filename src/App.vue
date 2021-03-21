@@ -12,7 +12,7 @@
             <div id="boxConnect">
               <!-- Bouton pour quitter la page connexion -->
               <button @click="closeConnexion" id="buttonLeaveConnection">
-                X
+                <font-awesome-icon icon="times" />
               </button>
               <!-- Header de "Connexion" avec titre -->
               <div id="headerConnect"><h3>Connexion</h3></div>
@@ -479,9 +479,20 @@ body {
   top: 18%;
 }
 #buttonLeaveConnection {
-  float: right;
+  font-size: 15px;
+  padding: auto;
   border: none;
+  margin: auto;
+  float: right;
   background-color: transparent;
+}
+#buttonLeaveConnection:hover {
+  cursor: pointer;
+  margin: auto;
+  padding: auto;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
 }
 /* Subscribe */
 #subscribe {
