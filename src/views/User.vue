@@ -26,7 +26,7 @@
           </div>
           <div style="text-align:justify ; padding : 10px">
             <p style="font-weight : bold; font-size : 20px">
-              Pseudo
+              {{ user.pseudo }}
             </p>
             <p style="color : grey; font-style : italic">
               Développeur Full Stack | Entreprise : Le Bocal
@@ -53,7 +53,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  inject: ["user"],
+};
 </script>
 <style scoped>
 #user {
