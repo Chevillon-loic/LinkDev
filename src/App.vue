@@ -21,14 +21,14 @@
                 <label for="inputConnect">E-mail :</label><br />
                 <input
                   v-model="logMail"
-                  id="inputConnect"
+                  class="inputConnectSubscribe"
                   type="text"
                   placeholder="Mail"
                 /><br /><br />
                 <label for="inputPassword">Mot de passe :</label><br />
                 <input
                   v-model="logPassword"
-                  id="inputPassword"
+                  class="inputConnectSubscribe"
                   type="text"
                   placeholder="Mot de passe"
                 />
@@ -36,12 +36,15 @@
               <!-- footer de "Connexion" avec bouton etc -->
               <div id="footerConnect">
                 <!-- .Attention, Home = Link modelé en btn -->
-                <br /><button class="btnLogin" @click="validLogin">
+                <br /><button class="btnConnectSubscribe" @click="validLogin">
                   login
                 </button>
                 <p style="font-style : italic; color:grey; font-size :15px">
                   Pas de compte?
-                  <button class="btnLogin" @click="connectionToSubscribe">
+                  <button
+                    class="btnConnectSubscribe"
+                    @click="connectionToSubscribe"
+                  >
                     Inscrivez vous !
                   </button>
                 </p>
@@ -65,21 +68,41 @@
           <h3>Inscription</h3>
           <div id="pseudo">
             <label for="pseudo">Pseudo</label><br />
-            <input type="text" name="pseudo" v-model="user.pseudo" /><br />
+            <input
+              type="text"
+              name="pseudo"
+              class="inputConnectSubscribe"
+              placeholder="Ex : MMLdev"
+              v-model="user.pseudo"
+            /><br />
           </div>
           <div id="divEmail">
             <label for="email">E-mail</label><br />
-            <input type="text" name="email" v-model="user.email" />
+            <input
+              type="text"
+              name="email"
+              placeholder="Ex : MMLdev@gmail.com"
+              class="inputConnectSubscribe"
+              v-model="user.email"
+            />
           </div>
           <div>
             <label for="password">Mot de passe</label><br />
-            <input type="text" name="password" v-model="user.password" />
+            <input
+              type="text"
+              name="password"
+              placeholder="**********"
+              class="inputConnectSubscribe"
+              v-model="user.password"
+            />
           </div>
           <div>
             <label for="repeatPassword">Répéter le mot de passe</label><br />
             <input
               type="text"
               name="repeatPassword"
+              placeholder="**********"
+              class="inputConnectSubscribe"
               v-model="user.repeatPassword"
             />
           </div>
@@ -116,10 +139,14 @@
             </span>
           </div> -->
 
-          <button @click.prevent="pushUser">S'inscrire</button>
+          <button @click.prevent="pushUser" class="btnConnectSubscribe">
+            S'inscrire
+          </button>
           <p>
             Déja membre ?
-            <button @click="subscribeToConnection">Connectez-vous</button>
+            <button @click="subscribeToConnection" class="btnConnectSubscribe">
+              Connectez-vous
+            </button>
           </p>
         </div>
       </div>
@@ -128,16 +155,17 @@
     <!-- NAVBAR -->
     <!-- NAVBAR -->
     <div id="navbar">
-      <!-- LOGO NAVBAR -->
-      <div id="logos">
-        <router-link to="/"><p id="logo">[LinkDev]</p></router-link>
-      </div>
       <!-- BOUTON ACCUEIL -->
       <router-link to="/"
         ><font-awesome-icon id="faHome" icon="home"
       /></router-link>
-      <!-- BARRE DE RECHERCHE -->
-      <input type="text" placeholder="Rechercher sur LinkDev " />
+      <!-- LOGO NAVBAR -->
+      <div id="logos">
+        <router-link to="/"><p id="logo">[LinkDev]</p></router-link>
+      </div>
+
+      <!-- BARRE DE RECHERCHE
+      <input type="text" placeholder="Rechercher sur LinkDev " /> -->
       <!-- SI  isConnected==TRUE alors -->
       <div v-if="isConnected == false">
         <!-- Fait apparaitre la div connection -->
@@ -157,7 +185,7 @@
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
-        <button @click="checkToken">oPLPLPLPL</button>
+        <!-- <button @click="checkToken">CheckToken</button> -->
       </div>
     </div>
     <router-view />
@@ -405,6 +433,9 @@ body {
   margin: 0px;
   color: white;
   margin: 0 15px;
+  position: absolute;
+  left: 94vh;
+  top: -1px;
 }
 #logo:hover {
   background-color: rgb(73, 73, 73);
@@ -457,7 +488,7 @@ body {
   border-radius: 5px;
   width: 91%;
   margin: auto;
-  height: 51vh;
+  height: 58vh;
 }
 .btnHome {
   border: 1px solid black;
@@ -491,7 +522,7 @@ body {
   border-radius: 5px;
   width: 91%;
   margin: auto;
-  height: 51vh;
+  height: 58vh;
 }
 #nameSurname {
   display: flex;
@@ -520,14 +551,13 @@ body {
   font-size: 17px;
 }
 /* Style Input connexion */
-#inputConnect,
-#inputPassword {
+.inputConnectSubscribe {
   border: none;
   border-bottom: 2px solid grey;
   margin: 10px;
   padding: 5px;
 }
-.btnLogin {
+.btnConnectSubscribe {
   background-color: transparent;
   color: grey;
   border: none;
@@ -535,14 +565,14 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-.btnLogin:hover {
+.btnConnectSubscribe:hover {
   color: white;
   background-color: grey;
   box-shadow: 0 0 6px 1px grey;
 }
 /* test */
 
-.box::before,
+/* .box::before,
 .box::after {
   content: "";
   position: absolute;
@@ -583,5 +613,5 @@ body {
   100% {
     background-position: 0 0;
   }
-}
+} */
 </style>

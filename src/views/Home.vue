@@ -136,7 +136,6 @@ export default {
   margin: auto;
   width: 75%;
   border-radius: 5px;
-  box-shadow: 0 0 2px 1px grey;
 }
 button {
   padding: 5px;

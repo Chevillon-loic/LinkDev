@@ -35,9 +35,11 @@
         <button v-on:click.prevent="btnLike">J'aime</button>
         <!-- Les commentaires -->
       </div>
-      <button v-on:click="btnCommenter" id="btnComment">
-        Afficher les commentaires
-      </button>
+      <span>
+        <button v-on:click="btnCommenter" id="btnComment">
+          Afficher les commentaires
+        </button>
+      </span>
       <div id="postComment">
         <div v-if="burgerComment == false">
           <ul style=";text-align:left">
