@@ -180,12 +180,11 @@
       <!-- sinon -->
       <div v-else>
         <router-link to="/User"
-          ><span> {{ logMail }} </span></router-link
+          ><span> {{ user.pseudo }} </span></router-link
         >
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
-        <button @click="checkToken">CheckToken</button>
       </div>
     </div>
     <router-view />
@@ -241,7 +240,7 @@ export default {
         console.log(this.tokenUser);
 
         const data = await response.json(); // Lire la réponse au format JSON
-
+        this.user.pseudo = data.name;
         console.log(data); // Body de la réponse
       } catch (error) {
         /* En cas d'erreur lors de l'exécutino de la requête */
@@ -295,7 +294,8 @@ export default {
 
         const data = await response.json();
         this.tokenUser = data.token;
-
+        const checkToken = this.checkToken;
+        checkToken();
         console.log(data);
       } catch (error) {
         console.log(error);
