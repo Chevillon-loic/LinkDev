@@ -20,7 +20,6 @@
     </div>
 
     <div id="PostBox">
-      <div></div>
       <!-- Contenu nb Like + nb Comment -->
       <div style="display:flex;justify-content:space-between" id="postNb">
         <span style="text-align:left;">J'aime : {{ like }}</span>

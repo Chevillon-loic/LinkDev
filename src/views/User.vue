@@ -43,10 +43,20 @@
         </div>
         <div style="text-align : justify; padding : 10px">
           <p>Compétence de l'utilisateur</p>
-          <ul>
-            <li>PHP : Expert</li>
-            <li>JavaScript : Junior</li>
-          </ul>
+          <table>
+            <tr>
+              <th>Language de développement</th>
+              <th>Niveau de compétence</th>
+            </tr>
+            <tr>
+              <td>JaveScript</td>
+              <td>Expert</td>
+            </tr>
+            <tr>
+              <td>PHP</td>
+              <td>Intermédiaire</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
