@@ -14,8 +14,10 @@
               <button @click="closeConnexion" id="buttonLeaveConnection">
                 <font-awesome-icon icon="times" />
               </button>
+
               <!-- Header de "Connexion" avec titre -->
               <div id="headerConnect"><h3>Connexion</h3></div>
+
               <!-- Contenu de "Connexion" avec input etc -->
               <div id="contentConnect">
                 <label for="inputConnect">E-mail :</label><br />
@@ -29,10 +31,11 @@
                 <input
                   v-model="logPassword"
                   class="inputConnectSubscribe"
-                  type="text"
+                  type="password"
                   placeholder="Mot de passe"
                 />
               </div>
+
               <!-- footer de "Connexion" avec bouton etc -->
               <div id="footerConnect">
                 <!-- .Attention, Home = Link modelé en btn -->
@@ -54,9 +57,11 @@
         </div>
       </div>
     </div>
+
     <!-- DIV SUBSCRIBE -->
     <!-- DIV SUBSCRIBE -->
     <!-- DIV SUBSCRIBE -->
+
     <!-- si divsubscribe est true affiche la div -->
     <div v-if="divSubscribe == true" id="fondGris">
       <div id="divSubscribe" class="box">
@@ -65,8 +70,10 @@
           <button @click="closeSubscribe" id="buttonLeaveSubscribe">
             <font-awesome-icon icon="times" />
           </button>
+
           <h3>Inscription</h3>
           <div id="pseudo">
+            <!-- pseudo -->
             <label for="pseudo">Pseudo</label><br />
             <input
               type="text"
@@ -76,6 +83,7 @@
               v-model="user.pseudo"
             /><br />
           </div>
+          <!-- mail -->
           <div id="divEmail">
             <label for="email">E-mail</label><br />
             <input
@@ -87,9 +95,10 @@
             />
           </div>
           <div>
+            <!-- password -->
             <label for="password">Mot de passe</label><br />
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="**********"
               class="inputConnectSubscribe"
@@ -97,9 +106,10 @@
             />
           </div>
           <div>
+            <!-- repeatPassword -->
             <label for="repeatPassword">Répéter le mot de passe</label><br />
             <input
-              type="text"
+              type="password"
               name="repeatPassword"
               placeholder="**********"
               class="inputConnectSubscribe"
@@ -198,12 +208,11 @@ export default {
   data: () => ({
     tokenUser: "",
     // Connection
-    isConnect: Boolean,
     logMail: "",
     logPassword: "",
     isConnected: false,
     divConnexion: false,
-    // Subscribe
+    // Inscription
     user: {
       pseudo: "",
       email: "",
@@ -217,7 +226,6 @@ export default {
   }),
 
   /* Options de la requête */
-
   methods: {
     checkToken: async function() {
       const token = this.tokenUser;
@@ -261,7 +269,6 @@ export default {
     },
 
     // Connection
-
     validLogin: async function() {
       // FETCH CONNEXION
       const body = {
@@ -306,19 +313,27 @@ export default {
     linkConnection: function() {
       this.divConnexion = true;
     },
+
     closeConnexion: function() {
       this.divConnexion = false;
     },
+
     // Subscribe
     pushUser: async function() {
       /* Conditions Subscribe */
       if (this.user.password != this.user.repeatPassword) {
-        alert("echec mdp");
+        alert("les mots de passe doivent être identiques");
         return;
       }
       if (this.user.pseudo == "") {
         alert("Entrez un pseudo");
         return;
+      }
+      if (this.user.email == "") {
+        alert("Entrez un Email");
+      }
+      if (this.user.password == "") {
+        alert("Entrez un mot de passe");
       }
 
       /* Envois requêtes Subscribe */

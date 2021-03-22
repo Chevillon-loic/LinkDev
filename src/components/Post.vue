@@ -42,7 +42,9 @@
           v-if="burgerComment == false"
         >
           <ul style="text-align:left">
-            <li style="list-style-type: none">Oh my god !!</li>
+            <li style="list-style-type: none">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit !!
+            </li>
             <li
               v-for="item in tabComment"
               :key="item"
