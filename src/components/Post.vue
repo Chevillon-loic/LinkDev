@@ -50,7 +50,7 @@
               :key="item"
               style="list-style-type: none"
             >
-              {{ item }}
+              De {{ user.pseudo }} : {{ item }}
             </li>
           </ul>
           <div v-if="checkLogin() === true">

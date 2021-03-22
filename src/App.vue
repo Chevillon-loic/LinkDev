@@ -199,7 +199,6 @@
       </div>
     </div>
     <router-view />
-    <footer>&copy; - DevLink Property 2021</footer>
   </div>
 </template>
 
@@ -250,6 +249,7 @@ export default {
 
         const data = await response.json(); // Lire la réponse au format JSON
         this.user.pseudo = data.name;
+        this.user.email = data.email;
         console.log(data); // Body de la réponse
       } catch (error) {
         /* En cas d'erreur lors de l'exécutino de la requête */
@@ -400,6 +400,7 @@ export default {
 
 <style>
 #faHome {
+  margin-left: 20px;
   font-size: 30px;
   padding: 10px;
   border-radius: 5px;
@@ -445,7 +446,6 @@ body {
 #logo {
   font-size: 35px;
   padding: 5px;
-  margin: 0px;
   color: white;
   margin: 0 15px;
   position: absolute;
