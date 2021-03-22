@@ -53,9 +53,11 @@
             <button style="width:110px" @click="btnContact">
               Me contacter
             </button>
-            <button @click="btnModif" style="margin-right:40px;width:150px">
-              Modifier le profil
-            </button>
+            <span v-if="checkLogin() === true"
+              ><button @click="btnModif" style="margin-right:40px;width:150px">
+                Modifier le profil
+              </button></span
+            >
           </div>
 
           <!-- Condition et tableau langage-->
