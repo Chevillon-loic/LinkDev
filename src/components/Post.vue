@@ -1,7 +1,7 @@
 <template>
   <div id="Post">
     <div id="PostTop" style="display:flex;justify-content:space-between">
-      <span>De : {{ pseudoName }} </span
+      <span>De : {{ user.pseudo }} </span
       ><span style="font-style:italic;font-size: 14px;color: grey;"
         >mardi 24 2017 à 21h</span
       >
@@ -15,7 +15,7 @@
         />
       </div>
       <div id="PostRight" style="width:80%;text-align:justify;padding:5px">
-        <p>{{ text }}Lore</p>
+        <p>{{ text }}</p>
       </div>
     </div>
 
@@ -48,7 +48,7 @@
               :key="item"
               style="list-style-type: none"
             >
-              {{ item }}
+              De {{ user.pseudo }} : {{ item }}
             </li>
           </ul>
           <div v-if="checkLogin() === true">
@@ -86,7 +86,7 @@ export default {
     pseudoName: String,
     text: String,
   },
-  inject: ["logout", "login", "checkLogin"],
+  inject: ["logout", "login", "checkLogin", "user"],
   data() {
     return {
       propsLike: true,
