@@ -3,6 +3,7 @@
     <!-- DIV CONNECTION -->
     <!-- DIV CONNECTION -->
     <!-- DIV CONNECTION -->
+
     <div id="connection">
       <!-- si divConnexion est true affiche la div -->
       <div v-if="divConnexion == true" id="fondGris">
@@ -161,6 +162,7 @@
         </div>
       </div>
     </div>
+
     <!-- NAVBAR -->
     <!-- NAVBAR -->
     <!-- NAVBAR -->
@@ -195,7 +197,6 @@
         <button @click="logout" id="buttonLogout">
           <font-awesome-icon icon="power-off" />
         </button>
-        <!-- <button @click="checkToken">CheckToken</button> -->
       </div>
     </div>
     <router-view />
@@ -593,48 +594,4 @@ body {
   background-color: grey;
   box-shadow: 0 0 6px 1px grey;
 }
-/* test */
-
-/* .box::before,
-.box::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    45deg,
-    #ffffff,
-    #ffffff,
-    #ffffff,
-    #000000,
-    #000000,
-    #000000,
-    #ffffff,
-    #ffffff,
-    #ffffff
-  );
-  width: 100%;
-  height: 100%;
-  transform: scale(1.02);
-  z-index: -1;
-  background-size: 500%;
-  animation: animate 20s infinite;
-  border-radius: 10px;
-}
-
-.box::after {
-  filter: blur(20px);
-}
-
-@keyframes animate {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 300% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-} */
 </style>

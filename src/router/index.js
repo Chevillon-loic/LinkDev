@@ -4,10 +4,6 @@ import Home from "../views/Home.vue";
 import User from "../views/User.vue";
 import UserSelect from "../views/UserSelect.vue";
 
-
-
-
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -26,7 +22,6 @@ const routes = [
     name: "UserSelect",
     component: UserSelect
   },
-
 ];
 
 const router = new VueRouter({
